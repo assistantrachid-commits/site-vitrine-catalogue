@@ -320,7 +320,7 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
 /* ─── CONTACT FORM ─── */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', e => {
+  contactForm.addEventListener('submit', async e => {
     e.preventDefault();
 
     const required = contactForm.querySelectorAll('[required]');
@@ -334,14 +334,32 @@ if (contactForm) {
     });
     if (!valid) return;
 
-    // Swap form for success message
-    const body = contactForm.closest('.modal-body');
-    body.innerHTML = `
-      <div class="form-success">
-        <div class="form-success-icon"><i class="ti ti-circle-check"></i></div>
-        <h3>Demande envoyée</h3>
-        <p>Merci ! Je reviendrai vers vous sous 48h.</p>
-      </div>
-    `;
+    const submitBtn = contactForm.querySelector('[type="submit"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.querySelector('.btn-text').textContent = 'Envoi…'; }
+
+    try {
+      const data = new FormData(contactForm);
+      const res = await fetch('https://formsubmit.co/ajax/rachid.finder@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      const json = await res.json();
+      if (json.success === 'true' || json.success === true) {
+        const body = contactForm.closest('.modal-body');
+        body.innerHTML = `
+          <div class="form-success">
+            <div class="form-success-icon"><i class="ti ti-circle-check"></i></div>
+            <h3>Demande envoyée</h3>
+            <p>Merci ! Je reviendrai vers vous sous 48h.</p>
+          </div>
+        `;
+      } else {
+        throw new Error();
+      }
+    } catch {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.querySelector('.btn-text').textContent = 'Envoyer'; }
+      alert('Une erreur est survenue. Contactez-moi directement : rachid.finder@gmail.com');
+    }
   });
 }

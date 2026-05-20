@@ -40,12 +40,12 @@
     .page-header {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 64px;
+      padding: 14px 64px;
       background: var(--bg);
       border-bottom: 0.5px solid var(--border);
     }
-    .page-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--white); }
-    .page-logo span { color: var(--gold); }
+    .logo-brand { display: flex; align-items: center; }
+    .logo-img-header { height: 54px; width: auto; display: block; }
     .page-back {
       font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
       text-transform: uppercase; color: var(--text-mute);
@@ -350,7 +350,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .page-header { padding: 18px 20px; }
+      .page-header { padding: 10px 20px; }
+      .logo-img-header { height: 44px; }
       .page-wrap { padding: 40px 20px 72px; }
       .form-title { font-size: 36px; }
       .grid-2 { grid-template-columns: 1fr; }
@@ -364,7 +365,7 @@
 
   <!-- ── HEADER ── -->
   <header class="page-header">
-    <a href="index.html" class="page-logo">Rachid<span>·</span></a>
+    <a href="index.html" class="logo-brand"><img src="logo%202.png" alt="Rachid" class="logo-img-header"></a>
     <a href="index.html" class="page-back">Retour au site</a>
   </header>
 
@@ -761,9 +762,14 @@
       const data = new FormData(form);
       selectedFiles.files && Array.from(selectedFiles.files).forEach(f => data.append('fichiers[]', f));
 
-      const res = await fetch('traitement.php', { method: 'POST', body: data });
+      const res = await fetch('https://formsubmit.co/ajax/rachid.finder@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
 
-      if (res.ok) {
+      const json = await res.json();
+      if (json.success === 'true' || json.success === true) {
         formContainer.style.display = 'none';
         formSuccess.classList.add('show');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -773,7 +779,7 @@
     } catch {
       submitBtn.disabled = false;
       submitBtn.querySelector('span').textContent = 'Envoyer ma demande';
-      alert('Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.');
+      alert('Une erreur est survenue. Contactez-moi directement : rachid.finder@gmail.com');
     }
   });
 </script>

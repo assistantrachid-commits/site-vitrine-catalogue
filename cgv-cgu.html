@@ -46,12 +46,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 64px;
+      padding: 14px 64px;
       background: var(--bg);
       border-bottom: 0.5px solid var(--border);
     }
-    .logo { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--white); }
-    .logo span { color: var(--gold); }
+    .logo-brand { display: flex; align-items: center; }
+    .logo-img-header { height: 54px; width: auto; display: block; }
     .back-link {
       font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--text-mute); display: flex; align-items: center; gap: 8px; transition: color 0.3s;
@@ -296,7 +296,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .header { padding: 18px 20px; }
+      .header { padding: 10px 20px; }
+      .logo-img-header { height: 44px; }
       .page-nav { padding: 0 20px; }
       .page-hero { padding: 48px 20px 40px; }
       .page-title { font-size: 36px; }
@@ -316,7 +317,7 @@
 
   <!-- HEADER -->
   <header class="header">
-    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="logo-brand"><img src="logo%202.png" alt="Rachid" class="logo-img-header"></a>
     <a href="index.html" class="back-link">Retour au site</a>
   </header>
 

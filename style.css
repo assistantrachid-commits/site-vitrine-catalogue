@@ -119,7 +119,7 @@ img { display: block; max-width: 100%; }
 }
 
 .logo-img-header {
-  height: 42px;
+  height: 54px;
   width: auto;
   display: block;
   mix-blend-mode: screen;
@@ -134,7 +134,7 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 768px) {
-  .logo-img-header { height: 34px; }
+  .logo-img-header { height: 44px; }
   .logo-img-footer { height: 56px; }
 }
 
@@ -146,7 +146,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 64px;
+  padding: 14px 64px;
   background: var(--bg);
   border-bottom: 0.5px solid var(--border);
 }
@@ -780,7 +780,9 @@ img { display: block; max-width: 100%; }
   max-width: 400px;
   margin-bottom: 32px;
 }
-.footer-social { display: flex; gap: 10px; margin-top: 24px; }
+.footer-contact-email { margin-top: 24px; }
+.footer-contact-email a { font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 0.03em; transition: color 0.3s; }
+.footer-contact-email a:hover { color: var(--gold); }
 .social-link {
   width: 38px;
   height: 38px;
@@ -1007,7 +1009,7 @@ img { display: block; max-width: 100%; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .header { padding: 18px 20px; }
+  .header { padding: 10px 20px; }
   .nav-close { right: 20px; top: 18px; }
   .nav-link { font-size: 28px; }
 
