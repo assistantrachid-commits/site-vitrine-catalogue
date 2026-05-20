@@ -237,9 +237,9 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
   track.addEventListener('mouseleave', startTimer);
 })();
 
-/* ─── AVIS CAROUSEL (mobile uniquement) ─── */
+/* ─── AVIS CAROUSEL ─── */
 (function () {
-  const grid = document.getElementById('avisGrid');
+  const grid     = document.getElementById('avisGrid');
   if (!grid) return;
 
   const track    = grid.parentElement;
@@ -247,22 +247,27 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
   const cards    = Array.from(grid.querySelectorAll('.avis-card'));
   const total    = cards.length;
 
-  let current    = 0;
-  let dots       = [];
-  let startX     = 0;
+  let current   = 0;
+  let dots      = [];
+  let startX    = 0;
   let isDragging = false;
   let dragDelta  = 0;
-  let initialised = false;
 
-  function isMobile() { return window.innerWidth <= 768; }
+  function perView()   { return window.innerWidth > 768 ? 3 : 1; }
+  function numPages()  { return Math.ceil(total / perView()); }
+
+  function setWidths() {
+    const w = Math.floor(track.offsetWidth / perView());
+    cards.forEach(c => { c.style.width = w + 'px'; c.style.flex = '0 0 ' + w + 'px'; });
+  }
 
   function buildDots() {
     dotsWrap.innerHTML = '';
     dots = [];
-    for (let i = 0; i < total; i++) {
+    for (let i = 0; i < numPages(); i++) {
       const dot = document.createElement('button');
       dot.className = 'carousel-dot' + (i === current ? ' active' : '');
-      dot.setAttribute('aria-label', 'Avis ' + (i + 1));
+      dot.setAttribute('aria-label', 'Page ' + (i + 1));
       const idx = i;
       dot.addEventListener('click', () => goTo(idx));
       dotsWrap.appendChild(dot);
@@ -271,35 +276,26 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
   }
 
   function updateTransform() {
-    const cardW = track.offsetWidth;
-    grid.style.transform = 'translateX(-' + (current * cardW) + 'px)';
+    grid.style.transform = 'translateX(-' + (current * track.offsetWidth) + 'px)';
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
   }
 
   function goTo(index) {
-    current = ((index % total) + total) % total;
+    current = ((index % numPages()) + numPages()) % numPages();
     updateTransform();
   }
 
   function init() {
-    if (!isMobile()) return;
-    initialised = true;
-    const cardW = track.offsetWidth;
-    cards.forEach(c => { c.style.width = cardW + 'px'; c.style.flex = '0 0 ' + cardW + 'px'; });
     current = 0;
+    setWidths();
     buildDots();
     updateTransform();
   }
 
   requestAnimationFrame(init);
-
-  window.addEventListener('resize', () => {
-    if (isMobile() && !initialised) init();
-    else if (isMobile() && initialised) updateTransform();
-  });
+  window.addEventListener('resize', init);
 
   track.addEventListener('touchstart', e => {
-    if (!initialised) return;
     startX = e.touches[0].clientX; isDragging = true; dragDelta = 0;
     grid.classList.add('dragging');
   }, { passive: true });
