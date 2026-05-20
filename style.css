@@ -527,20 +527,12 @@ img { display: block; max-width: 100%; }
 }
 .cat-card:hover .cat-icon-lg { color: rgba(201,169,110,0.85); }
 
-.cat-info { padding: 24px; }
-.cat-icon-sm {
-  font-size: 20px;
-  color: rgba(201,169,110,0.45);
-  display: block;
-  margin-bottom: 12px;
-  transition: color 0.35s;
-}
-.cat-card:hover .cat-icon-sm { color: rgba(201,169,110,0.85); }
+.cat-info { padding: 14px 24px 22px; }
 
 .cat-name {
   font-size: 15px;
   font-weight: 500;
-  color: var(--white);
+  color: var(--gold);
   margin-bottom: 6px;
 }
 .cat-sub { font-size: 13px; color: rgba(255,255,255,0.5); }
