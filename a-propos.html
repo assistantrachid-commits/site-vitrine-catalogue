@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos de moi — Rachid Ahmari</title>
+  <meta name="description" content="Rachid Ahmari — expert en acquisition produit. Son histoire, sa méthode, ses valeurs. Un service bâti sur la confiance et la transparence absolue.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-soft:   rgba(255,255,255,0.65);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --border-gold: rgba(201,169,110,0.25);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--sans); font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 64px; background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .logo { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--white); }
+    .logo span { color: var(--gold); }
+    .back-link {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-mute);
+      display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '←'; font-size: 12px; }
+
+    /* ── HERO SPLIT ── */
+    .hero-split {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      padding: 80px 64px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    /* ── PHOTO BLOCK ── */
+    .hero-photo-side {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-photo-side img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 460px;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+    .hero-photo-label {
+      margin-top: 18px;
+    }
+
+    .hero-photo-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .hero-photo-role {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── TEXT BLOCK ── */
+    .hero-text {
+      flex: 0 0 420px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-declaration {
+      font-family: var(--serif); font-size: 22px; font-weight: 300;
+      font-style: italic; color: var(--text-soft); line-height: 1.75;
+      border-left: 1.5px solid var(--gold); padding-left: 28px;
+    }
+
+    /* ── VALUES STRIP ── */
+    .values-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .value-item {
+      background: var(--bg);
+      padding: 28px 32px;
+    }
+
+    .value-word {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .value-word em { font-style: italic; color: var(--gold); }
+
+    .value-desc {
+      font-size: 11px;
+      color: var(--text-mute);
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── CONTENT ── */
+    .content { max-width: 860px; margin: 0 auto; padding: 72px 64px 100px; }
+
+    .section {
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .section-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-family: var(--serif); font-size: 32px; font-weight: 300;
+      color: var(--white); margin-bottom: 28px; line-height: 1.15;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    .text {
+      font-size: 14px; color: var(--text-soft); line-height: 2; margin-bottom: 18px;
+    }
+    .text:last-child { margin-bottom: 0; }
+    .text strong { color: var(--white); font-weight: 500; }
+
+    /* ── CITATION BLOCK ── */
+    .citation {
+      margin: 32px 0;
+      padding: 28px 32px;
+      border-left: 1.5px solid var(--gold);
+      background: rgba(201,169,110,0.03);
+    }
+
+    .citation-text {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.55;
+    }
+
+    /* ── ENGAGEMENT LIST ── */
+    .engagement-list {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .engagement-list li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 0 16px;
+      align-items: start;
+    }
+
+    .engagement-list li::before {
+      content: '·';
+      color: var(--gold);
+      font-size: 24px;
+      line-height: 1;
+      margin-top: -2px;
+    }
+
+    .engagement-list li p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.85;
+    }
+
+    .engagement-list li p strong {
+      color: var(--white);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ── FINALE QUOTE ── */
+    .finale {
+      text-align: center;
+      padding: 48px 0 0;
+    }
+
+    .finale-quote {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    .finale-quote em { color: var(--gold); }
+
+    .finale-name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      text-align: center;
+      padding: 48px 40px;
+      border: 0.5px solid var(--border-gold);
+      background: rgba(201,169,110,0.03);
+      margin-top: 56px;
+    }
+
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--bg);
+      background: var(--gold); padding: 14px 36px;
+      transition: background 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt); border-top: 0.5px solid var(--border);
+      padding: 32px 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-copy { font-size: 11px; color: var(--text-mute); }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-mute); transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-split {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        align-items: stretch;
+      }
+
+      .hero-text {
+        padding: 40px 20px 36px;
+        border-bottom: 0.5px solid var(--border);
+        order: 1;
+        flex: none;
+        align-items: flex-start;
+      }
+      .hero-declaration { font-size: 17px; }
+
+      .hero-photo-side {
+        order: 2;
+        flex: none;
+        align-items: center;
+        padding: 40px 20px 32px;
+        border-top: none;
+      }
+      .hero-photo-side img { max-height: 360px; width: auto; max-width: 100%; }
+      .hero-photo-label { margin-top: 16px; }
+
+      .values-strip { grid-template-columns: 1fr; }
+      .content { padding: 48px 20px 72px; }
+      .cta-block { padding: 32px 20px; }
+      .page-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- HERO SPLIT -->
+  <div class="hero-split">
+    <div class="hero-photo-side">
+      <img src="rachid-nobg.png" alt="Rachid Ahmari">
+      <div class="hero-photo-label">
+        <p class="hero-photo-name">Rachid Ahmari</p>
+        <p class="hero-photo-role">Expert acquisition produit</p>
+      </div>
+    </div>
+    <div class="hero-text">
+      <p class="hero-declaration">
+        "J'aurais pu faire beaucoup de choses avec ce que je sais. J'ai choisi d'en faire une seule : m'assurer que vous ne payez jamais plus que ce que vaut vraiment un produit."
+      </p>
+    </div>
+  </div>
+
+  <!-- VALEURS -->
+  <div class="values-strip">
+    <div class="value-item">
+      <p class="value-word"><em>Transparence</em></p>
+      <p class="value-desc">Chaque devis détaille exactement ce que vous payez. Aucune ligne floue, aucun frais caché.</p>
+    </div>
+    <div class="value-item">
+      <p class="value-word"><em>Intégrité</em></p>
+      <p class="value-desc">Mon nom est sur chaque engagement. Je ne peux pas me permettre d'être autre chose qu'honnête.</p>
+    </div>
+    <div class="value-item">
+      <p class="value-word"><em>Exigence</em></p>
+      <p class="value-desc">Pas le bon produit au bon prix ? Je ne vous envoie pas de devis. C'est aussi simple que ça.</p>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <main class="content">
+
+    <!-- 01 LE DÉCLIC -->
+    <div class="section">
+      <p class="section-label">01 — Le déclic</p>
+      <h2 class="section-heading">Ce que j'ai vu en <em>voyageant.</em></h2>
+      <p class="text">J'ai fait des études de commerce. J'ai voyagé. Et c'est en voyageant — en visitant des usines, des ateliers, des marchés de gros en Asie, au Moyen-Orient, en Europe — que j'ai vu quelque chose qui m'a profondément dérangé.</p>
+      <p class="text">Le même produit. La même qualité. <strong>Trois fois plus cher en boutique que sorti d'usine.</strong> Pas par accident. Par design. Une chaîne d'intermédiaires qui s'alimentent les uns les autres, chacun prenant sa marge, jusqu'au consommateur final — qui paie tout, sans le savoir.</p>
+      <p class="text">J'ai décidé de rompre cette chaîne. Pas par idéalisme. Par conviction que les gens méritent mieux que d'être systématiquement sur-facturés pour des produits qu'ils pourraient obtenir au juste prix.</p>
+
+      <div class="citation">
+        <p class="citation-text">"Ce que j'ai compris là-bas, c'est que l'accès au prix d'usine était réservé à ceux qui savent où regarder. J'ai décidé de partager cet accès."</p>
+      </div>
+    </div>
+
+    <!-- 02 CE QUE JE NE SUPPORTE PAS -->
+    <div class="section">
+      <p class="section-label">02 — Ce qui me définit</p>
+      <h2 class="section-heading">Une intolérance totale à <em>la malhonnêteté.</em></h2>
+      <p class="text">Je n'aime pas l'arnaque. Je n'aime pas les frais cachés. Je n'aime pas qu'on prenne les gens pour des naïfs parce qu'ils ne savent pas où chercher ou qu'ils n'ont pas le temps de le faire.</p>
+      <p class="text">Cette intolérance à la malhonnêteté n'est pas une posture marketing — c'est ce qui me définit profondément et ce qui structure chaque aspect de ma façon de travailler. C'est pour ça que chaque devis que j'émets détaille exactement ce que vous payez et pourquoi. <strong>Pas de ligne floue. Pas de surprise à la livraison.</strong> Ce que j'annonce est ce que vous payez — point.</p>
+      <p class="text">Et si je ne peux pas faire mieux que ce que vous trouvez ailleurs — je vous le dis. Parce que l'honnêteté, même quand elle ne m'arrange pas, est la seule façon de travailler que je connaisse.</p>
+    </div>
+
+    <!-- 03 LE RÉSEAU -->
+    <div class="section">
+      <p class="section-label">03 — Le réseau</p>
+      <h2 class="section-heading">Des années de terrain. <em>Des relations réelles.</em></h2>
+      <p class="text">Mon carnet d'adresses n'est pas une base de données achetée en ligne. Ce sont des années de déplacements, de rencontres, de relations construites dans la durée avec des fournisseurs sérieux sur plusieurs continents.</p>
+      <p class="text">Des ateliers en Asie. Des grossistes au Moyen-Orient. Des fabricants en Europe. Des gens que je connais, dont je connais la qualité, dont je connais les délais, et à qui je fais confiance pour tenir leurs engagements — parce qu'ils me connaissent aussi.</p>
+      <p class="text"><strong>Ce réseau, je le protège.</strong> Parce qu'il est le fondement de ce que je vous offre. Je ne travaille pas avec n'importe qui — je travaille avec les bons.</p>
+    </div>
+
+    <!-- 04 COMMENT JE TRAVAILLE -->
+    <div class="section">
+      <p class="section-label">04 — Ma façon de travailler</p>
+      <h2 class="section-heading">Un interlocuteur. <em>Un engagement.</em></h2>
+      <p class="text">Je ne suis pas une plateforme. Pas un algorithme. Quand vous m'écrivez, c'est moi qui lis, c'est moi qui cherche, c'est moi qui négocie, et c'est moi qui règle si quelque chose ne va pas.</p>
+
+      <ul class="engagement-list">
+        <li>
+          <p>
+            <strong>Je réponds personnellement</strong>
+            Votre message ne part pas dans un système de tickets. Je lis, je réfléchis, je réponds. Sous 48h, toujours.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Je me déplace si nécessaire</strong>
+            En fonction de mes disponibilités, je peux me déplacer pour rencontrer un client, examiner un produit, assister à une livraison. Parce que certaines choses ne se règlent pas par message.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Je reste jusqu'à la résolution</strong>
+            Si un problème survient — avec un fournisseur, un transporteur, une pièce défectueuse — je ne disparais pas. Je reste sur le dossier jusqu'à ce que ce soit réglé. C'est mon nom qui est engagé.
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Je dis non quand c'est non</strong>
+            Si je ne peux pas sourcer un produit dans de bonnes conditions — de qualité, de prix, de délai — je vous le dis clairement plutôt que de vous envoyer quelque chose qui ne vous satisfera pas.
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 05 CE QUI ME TOUCHE -->
+    <div class="section">
+      <p class="section-label">05 — Ce qui me touche vraiment</p>
+      <h2 class="section-heading">Donner accès au beau. <em>À tout le monde.</em></h2>
+
+      <p class="text">Il y a des moments qui restent. Des clients qu'on n'oublie pas.</p>
+      <p class="text">Une famille qui voulait équiper son salon. Des parents qui cherchaient quelque chose de beau pour leur intérieur — pas du luxe, juste de la qualité. Ce qu'ils avaient vu en magasin était magnifique. Et hors de portée. Trop cher. Encore une fois trop cher.</p>
+      <p class="text">Ce genre de situation me touche profondément. Pas par pitié — par indignation. Parce que ces familles ne demandent pas l'impossible. Elles demandent ce qu'elles méritent : accéder à un produit de qualité sans se ruiner, sans avoir à choisir entre bien vivre et bien gérer leur budget.</p>
+      <p class="text">La classe moyenne travaille. Elle économise. Elle a des goûts, des envies, des projets. Et elle se retrouve systématiquement écrasée par des marges qui n'ont aucune justification réelle — sinon celle d'exister depuis toujours et d'avoir été normalisées.</p>
+
+      <div class="citation">
+        <p class="citation-text">"Quand je réussis à livrer à une famille un produit qu'elle voulait depuis des mois, à un prix qu'elle n'espérait plus — ce moment-là, c'est pour ça que je fais ce travail. Pas pour la commission. Pour la réaction à l'autre bout."</p>
+      </div>
+
+      <p class="text" style="margin-top: 28px;">Il y a aussi quelque chose que j'ai observé partout — dans les maisons, dans les appartements, dans les projets de décoration que les gens portent en eux depuis des années. Une envie de beau. Une vision précise de ce que pourrait être leur intérieur. Des objets repérés dans un magazine, sur une vitrine, chez quelqu'un d'autre. Et cette phrase qui revient trop souvent : <strong>"C'est trop cher pour moi."</strong></p>
+      <p class="text">Pourtant ces objets existent. Ces matières, ces formes, ce savoir-faire — ils existent, accessibles, quelque part dans le monde. Ce qui manque, ce n'est pas le produit. C'est le chemin pour y accéder.</p>
+      <p class="text">Un intérieur qui vous ressemble ne devrait pas être un privilège. Une lampe designée, un meuble en matière noble, un accessoire qui transforme une pièce — ce sont des objets qui changent le quotidien, qui donnent de la fierté, qui font qu'on se sent bien chez soi. <strong>Tout le monde mérite ça.</strong> C'est pour ça que je travaille aussi sur la décoration, l'ameublement, les objets d'intérieur — parce que c'est là que l'injustice du prix est souvent la plus flagrante, et que je peux changer quelque chose de concret dans la vie des gens.</p>
+
+      <div class="citation">
+        <p class="citation-text">"Un bel intérieur n'est pas une question de moyens. C'est une question d'accès. Et cet accès, je peux vous l'ouvrir."</p>
+      </div>
+    </div>
+
+    <!-- 06 ÇA COMMENCE PAR UNE PHOTO -->
+    <div class="section">
+      <p class="section-label">06 — Pour commencer</p>
+      <h2 class="section-heading">Ça ne coûte <em>rien d'essayer.</em></h2>
+      <p class="text">Vous avez vu un produit en magasin. Sur un site internet. Dans un magazine. Chez un ami. Prenez-le en photo. Envoyez-le moi.</p>
+      <p class="text">Je vous dis ce qu'il vaut vraiment, ce que je peux faire, et à quel prix. <strong>Sans engagement. Sans frais. Sans obligation d'aller plus loin.</strong> Il n'y a aucune raison de ne pas essayer — et potentiellement beaucoup à gagner.</p>
+      <p class="text">Certains de mes clients m'ont contacté pour un seul produit. D'autres reviennent chaque mois. Dans les deux cas, ils savent qu'ils traitent avec quelqu'un qui a leur intérêt à cœur — pas sa commission.</p>
+    </div>
+
+    <!-- CITATION FINALE -->
+    <div class="section">
+      <div class="finale">
+        <p class="finale-quote">"Mon objectif n'est pas de faire une vente.<br>C'est que vous reveniez — et que vous <em>m'envoyiez quelqu'un."</em></p>
+        <p class="finale-name">Rachid Ahmari · Toulouse</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h2 class="cta-heading">Une question ?<br><em>Écrivez-moi.</em></h2>
+      <p class="cta-sub">Pas de formulaire qui disparaît dans le vide. Juste un échange direct avec quelqu'un qui vous répondra vraiment.</p>
+      <a href="index.html" class="btn-gold">Me contacter →</a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+</body>
+</html>

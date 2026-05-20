@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python --version 2>&1)",
+      "PowerShell(node --version 2>&1)",
+      "PowerShell(Start-Process python -ArgumentList '-m', 'http.server', '8080' -WorkingDirectory 'c:\\\\Users\\\\dounia\\\\Documents\\\\site-vitrine-catalogue' -WindowStyle Hidden; Start-Sleep -Seconds 2; $r = Invoke-WebRequest -Uri 'http://localhost:8080' -TimeoutSec 3 -UseBasicParsing; \"OK - status $\\($r.StatusCode\\)\")",
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\dounia\\\\Documents\\\\site-vitrine-catalogue\\\\ChatGPT Image 7 mai 2026, 12_21_54.png\" \"c:\\\\Users\\\\dounia\\\\Documents\\\\site-vitrine-catalogue\\\\rachid.png\")",
+      "PowerShell(pip install rembg 2>&1)",
+      "PowerShell(pip show rembg 2>&1)",
+      "PowerShell(pip install rembg[cli] --quiet 2>&1)",
+      "PowerShell(pip install \"rembg[cpu]\" --quiet 2>&1)"
+    ]
+  }
+}

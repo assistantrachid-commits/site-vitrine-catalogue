@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confidentialité & Cookies — Rachid·</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-soft:   rgba(255,255,255,0.65);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --border-gold: rgba(201,169,110,0.25);
+      --red-soft:    rgba(220,80,80,0.15);
+      --red-text:    rgba(220,100,100,0.9);
+      --green-soft:  rgba(80,180,120,0.12);
+      --green-text:  rgba(80,200,130,0.9);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--sans); font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 64px; background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .logo { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--white); }
+    .logo span { color: var(--gold); }
+    .back-link {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-mute);
+      display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '←'; font-size: 12px; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 80px 64px 64px; max-width: 860px;
+      margin: 0 auto; border-bottom: 0.5px solid var(--border);
+    }
+    .eyebrow {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: var(--serif); font-size: 56px; font-weight: 300;
+      color: var(--white); line-height: 1.05; margin-bottom: 28px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-intro {
+      font-family: var(--serif); font-size: 20px; font-weight: 300;
+      font-style: italic; color: var(--text-soft); line-height: 1.65;
+      border-left: 1.5px solid var(--gold); padding-left: 24px;
+    }
+
+    /* ── CONTENT ── */
+    .content { max-width: 860px; margin: 0 auto; padding: 64px 64px 100px; }
+
+    .section {
+      margin-bottom: 56px; padding-bottom: 56px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .section-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .section-heading {
+      font-family: var(--serif); font-size: 26px; font-weight: 300;
+      color: var(--white); margin-bottom: 20px; line-height: 1.2;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    .text {
+      font-size: 13.5px; color: var(--text-soft); line-height: 1.9; margin-bottom: 14px;
+    }
+    .text:last-child { margin-bottom: 0; }
+    .text strong { color: var(--white); font-weight: 500; }
+
+    /* ── OUI / NON GRID ── */
+    .collect-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 8px;
+    }
+
+    .collect-col { background: var(--bg); padding: 28px 24px; }
+
+    .collect-col-header {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .collect-col-header.yes { color: var(--green-text); }
+    .collect-col-header.no  { color: var(--red-text); }
+
+    .collect-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; border-radius: 50%;
+      font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+    .collect-badge.yes { background: var(--green-soft); color: var(--green-text); }
+    .collect-badge.no  { background: var(--red-soft);   color: var(--red-text); }
+
+    .collect-list {
+      list-style: none; display: flex; flex-direction: column; gap: 10px;
+    }
+    .collect-list li {
+      font-size: 13px; color: var(--text-soft); line-height: 1.7;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .collect-list li .tag {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 2px 7px; flex-shrink: 0; margin-top: 3px;
+    }
+    .collect-list.yes-list li .tag { background: var(--green-soft); color: var(--green-text); }
+    .collect-list.no-list  li .tag { background: var(--red-soft);   color: var(--red-text); }
+
+    /* ── COOKIE TABLE ── */
+    .cookie-table {
+      width: 100%; border-collapse: collapse; margin-top: 16px;
+    }
+    .cookie-table thead tr {
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    }
+    .cookie-table th {
+      padding: 10px 0; font-size: 9px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-mute); text-align: left;
+    }
+    .cookie-table th:not(:first-child) { padding-left: 16px; }
+    .cookie-table tbody tr {
+      border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    }
+    .cookie-table tbody tr:last-child { border-bottom: none; }
+    .cookie-table td {
+      padding: 14px 0; font-size: 12.5px; color: var(--text-soft);
+      line-height: 1.6; vertical-align: top;
+    }
+    .cookie-table td:not(:first-child) { padding-left: 16px; }
+    .cookie-table td:first-child { color: var(--white); font-weight: 400; width: 160px; }
+
+    .cookie-status {
+      display: inline-block; font-size: 9px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px;
+    }
+    .cookie-status.ok     { background: var(--green-soft); color: var(--green-text); }
+    .cookie-status.none   { background: var(--red-soft);   color: var(--red-text); }
+
+    /* ── ZERO TRACKING BLOCK ── */
+    .zero-block {
+      border: 0.5px solid var(--border-gold);
+      background: rgba(201,169,110,0.03);
+      padding: 32px;
+      margin-top: 8px;
+    }
+    .zero-block-title {
+      font-family: var(--serif); font-size: 22px; font-weight: 300;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .zero-block-title em { font-style: italic; color: var(--gold); }
+
+    .zero-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    }
+    .zero-item {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--red-soft); padding: 10px 14px;
+    }
+    .zero-item-x {
+      font-size: 14px; color: var(--red-text); font-weight: 700; flex-shrink: 0;
+    }
+    .zero-item-label {
+      font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.4;
+    }
+    .zero-item-label s { opacity: 0.5; }
+
+    /* ── SOUS-TRAITANTS ── */
+    .processor-item {
+      display: grid; grid-template-columns: 140px 1fr;
+      gap: 0 24px; padding: 20px 0;
+      border-bottom: 0.5px solid var(--border);
+      align-items: start;
+    }
+    .processor-item:first-of-type { padding-top: 0; }
+    .processor-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .processor-name { font-size: 13px; color: var(--white); font-weight: 500; }
+    .processor-role { font-size: 12px; color: var(--text-mute); margin-top: 3px; }
+    .processor-desc { font-size: 13px; color: var(--text-soft); line-height: 1.7; }
+
+    /* ── DROITS LIST ── */
+    .rights-list {
+      list-style: none; margin-top: 16px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .rights-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 13px; color: var(--text-soft); line-height: 1.6;
+    }
+    .rights-list li::before {
+      content: '·'; color: var(--gold); font-size: 18px;
+      line-height: 1.2; flex-shrink: 0;
+    }
+    .rights-list li strong { color: var(--white); font-weight: 500; }
+
+    /* ── HIGHLIGHT ── */
+    .highlight {
+      border: 0.5px solid var(--border-gold); padding: 20px 24px;
+      margin-top: 20px; background: rgba(201,169,110,0.04);
+    }
+    .highlight p { font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.8; }
+    .highlight p + p { margin-top: 10px; }
+    .highlight strong { color: var(--gold); font-weight: 500; }
+    .highlight a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt); border-top: 0.5px solid var(--border);
+      padding: 32px 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-copy { font-size: 11px; color: var(--text-mute); }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-mute); transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .header { padding: 18px 20px; }
+      .page-hero { padding: 48px 20px 40px; }
+      .page-title { font-size: 36px; }
+      .page-intro { font-size: 16px; }
+      .content { padding: 48px 20px 72px; }
+      .collect-grid { grid-template-columns: 1fr; }
+      .zero-grid { grid-template-columns: 1fr; }
+      .processor-item { grid-template-columns: 1fr; gap: 4px 0; }
+      .processor-role { margin-bottom: 8px; }
+      .cookie-table td:first-child { width: 110px; }
+      .page-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Transparence &amp; vie privée</p>
+    <h1 class="page-title">Confidentialité <em>&amp; Cookies.</em></h1>
+    <p class="page-intro">
+      Votre vie privée n'est pas un produit. Sur ce site, elle ne le sera jamais.
+    </p>
+  </div>
+
+  <!-- CONTENU -->
+  <main class="content">
+
+    <!-- 01 CE QU'ON COLLECTE -->
+    <div class="section">
+      <p class="section-label">01 — Ce que nous collectons</p>
+      <h2 class="section-heading">Exactement ce dont nous avons besoin. <em>Rien de plus.</em></h2>
+      <p class="text">Voici, sans ambiguïté, ce qui est collecté sur ce site — et ce qui ne l'est pas. Aucun jargon, aucune clause dissimulée.</p>
+
+      <div class="collect-grid">
+        <div class="collect-col">
+          <p class="collect-col-header yes">
+            <span class="collect-badge yes">✓</span>
+            Ce que nous collectons
+          </p>
+          <ul class="collect-list yes-list">
+            <li><span class="tag">Formulaire</span>Nom et prénom, adresse email, contenu de votre message</li>
+            <li><span class="tag">Technique</span>Logs d'accès serveur (IP, navigateur, heure) — gérés automatiquement par Hostinger pour la sécurité</li>
+          </ul>
+        </div>
+        <div class="collect-col">
+          <p class="collect-col-header no">
+            <span class="collect-badge no">✗</span>
+            Ce que nous ne collectons jamais
+          </p>
+          <ul class="collect-list no-list">
+            <li><span class="tag">Jamais</span>Historique de navigation ou comportement sur le site</li>
+            <li><span class="tag">Jamais</span>Données de localisation précise</li>
+            <li><span class="tag">Jamais</span>Données de paiement (traitées hors site)</li>
+            <li><span class="tag">Jamais</span>Profil publicitaire ou centres d'intérêt</li>
+            <li><span class="tag">Jamais</span>Données biométriques ou sensibles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 POURQUOI -->
+    <div class="section">
+      <p class="section-label">02 — Pourquoi nous collectons</p>
+      <h2 class="section-heading">Une seule raison. <em>Traiter votre demande.</em></h2>
+      <p class="text">Les données transmises via le formulaire de contact sont utilisées à une seule fin : comprendre votre besoin et vous répondre. Elles ne sont ni vendues, ni louées, ni partagées avec des tiers à des fins commerciales.</p>
+      <p class="text">La base légale de ce traitement est le <strong>consentement</strong> (article 6.1.a du RGPD) — vous nous contactez volontairement. Ce consentement peut être retiré à tout moment en nous écrivant, sans que cela remette en cause les échanges déjà intervenus.</p>
+      <p class="text"><strong>Pas de décision automatisée, pas de profilage.</strong> Conformément à l'article 22 du RGPD, aucune décision vous concernant n'est prise sur la base d'un traitement automatisé. Aucun algorithme ne construit de profil sur votre comportement. Il n'y a qu'un humain — Rachid — qui lit votre message et vous répond.</p>
+
+      <div class="highlight">
+        <p>Durée de conservation : <strong>3 ans</strong> à compter du dernier échange, sauf demande de suppression anticipée de votre part. Passé ce délai, vos données sont supprimées.</p>
+      </div>
+    </div>
+
+    <!-- 03 COOKIES -->
+    <div class="section">
+      <p class="section-label">03 — Audit cookies</p>
+      <h2 class="section-heading">Ce qui tourne sur ce site. <em>Tout. Sans exception.</em></h2>
+      <p class="text">Voici l'inventaire complet et honnête des cookies présents sur ce site. Aucun cookie n'est omis, aucun tracker n'est dissimulé.</p>
+
+      <table class="cookie-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Nom / Origine</th>
+            <th>Rôle</th>
+            <th>Durée</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Session</td>
+            <td>Fonctionnement du site</td>
+            <td>Navigation fluide, menu, modales — strictement techniques</td>
+            <td>Fermeture du navigateur</td>
+            <td><span class="cookie-status ok">Actif</span></td>
+          </tr>
+          <tr>
+            <td>Analytique</td>
+            <td>Google Analytics, Matomo…</td>
+            <td>Mesure d'audience</td>
+            <td>—</td>
+            <td><span class="cookie-status none">Aucun</span></td>
+          </tr>
+          <tr>
+            <td>Publicitaire</td>
+            <td>Google Ads, Meta…</td>
+            <td>Ciblage publicitaire</td>
+            <td>—</td>
+            <td><span class="cookie-status none">Aucun</span></td>
+          </tr>
+          <tr>
+            <td>Réseaux sociaux</td>
+            <td>Meta Pixel, TikTok Pixel…</td>
+            <td>Retargeting, suivi social</td>
+            <td>—</td>
+            <td><span class="cookie-status none">Aucun</span></td>
+          </tr>
+          <tr>
+            <td>Tiers divers</td>
+            <td>Hotjar, Intercom, HubSpot…</td>
+            <td>Comportement, CRM, chat</td>
+            <td>—</td>
+            <td><span class="cookie-status none">Aucun</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text" style="margin-top: 20px;">Les seuls cookies techniques présents sont ceux indispensables au fonctionnement du site (navigation, affichage). Ils ne nécessitent pas de consentement préalable conformément aux recommandations de la CNIL. Ils n'identifient pas personnellement les visiteurs.</p>
+    </div>
+
+    <!-- 04 ZERO TRACKING -->
+    <div class="section">
+      <p class="section-label">04 — Zéro tracking</p>
+      <h2 class="section-heading">Ce que nous n'utilisons <em>jamais.</em></h2>
+      <p class="text">En 2026, la grande majorité des sites web installent des dizaines de trackers à votre insu. Ce site fait le choix inverse — par conviction, pas seulement par obligation.</p>
+
+      <div class="zero-block">
+        <h3 class="zero-block-title">Absent de ce site. <em>Pour toujours.</em></h3>
+        <div class="zero-grid">
+          <div class="zero-item">
+            <span class="zero-item-x">✗</span>
+            <span class="zero-item-label"><s>Google Analytics</s> — suivi d'audience</span>
+          </div>
+          <div class="zero-item">
+            <span class="zero-item-x">✗</span>
+            <span class="zero-item-label"><s>Meta Pixel</s> — retargeting Facebook/Instagram</span>
+          </div>
+          <div class="zero-item">
+            <span class="zero-item-x">✗</span>
+            <span class="zero-item-label"><s>TikTok Pixel</s> — suivi comportemental</span>
+          </div>
+          <div class="zero-item">
+            <span class="zero-item-x">✗</span>
+            <span class="zero-item-label"><s>Google Ads</s> — conversion publicitaire</span>
+          </div>
+          <div class="zero-item">
+            <span class="zero-item-x">✗</span>
+            <span class="zero-item-label"><s>Hotjar</s> — enregistrement de sessions</span>
+          </div>
+          <div class="zero-item">
+            <span class="zero-item-x">✗</span>
+            <span class="zero-item-label"><s>Data brokers</s> — revente de profils</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 SOUS-TRAITANTS -->
+    <div class="section">
+      <p class="section-label">05 — Sous-traitants</p>
+      <h2 class="section-heading">Les seuls prestataires <em>qui accèdent à vos données.</em></h2>
+      <p class="text">Conformément à l'article 28 du RGPD, voici les sous-traitants qui traitent des données à caractère personnel pour le compte de Rachid Ahmari, dans le cadre strict de leur mission technique :</p>
+
+      <div class="processor-item">
+        <div>
+          <p class="processor-name">Hostinger</p>
+          <p class="processor-role">Hébergeur du site</p>
+        </div>
+        <p class="processor-desc">Hostinger International Ltd, 61 Lordou Vironos Street, 6023 Larnaca, Chypre. Héberge le site et enregistre automatiquement les logs d'accès serveur (adresse IP, navigateur, horodatage) à des fins de sécurité et de stabilité. Ces données ne sont pas utilisées à des fins commerciales.</p>
+      </div>
+
+      <div class="processor-item">
+        <div>
+          <p class="processor-name">Google Fonts</p>
+          <p class="processor-role">Typographies web</p>
+        </div>
+        <p class="processor-desc">Chargement des polices de caractères depuis les serveurs Google. Une requête technique est effectuée à chaque visite, pouvant transmettre votre adresse IP à Google. Aucune donnée supplémentaire n'est collectée dans ce cadre.</p>
+      </div>
+
+      <p class="text" style="margin-top: 20px;">Aucun autre prestataire n'a accès à vos données personnelles. Aucune donnée n'est transférée en dehors de l'Union Européenne, à l'exception des interactions avec Google Fonts (encadrées par les clauses contractuelles types de la Commission Européenne).</p>
+    </div>
+
+    <!-- 06 SÉCURITÉ -->
+    <div class="section">
+      <p class="section-label">06 — Sécurité</p>
+      <h2 class="section-heading">Des données <em>protégées.</em></h2>
+      <p class="text">Le site est servi exclusivement en <strong>HTTPS</strong> — toutes les communications entre votre navigateur et le serveur sont chiffrées. Aucune donnée sensible (coordonnées bancaires, mots de passe) n'est stockée sur ce site. Les transactions financières sont gérées hors plateforme, par des canaux sécurisés convenus directement avec le client.</p>
+      <p class="text">Les données de contact transmises via le formulaire sont conservées dans des environnements sécurisés à accès restreint. Rachid Ahmari est le seul à y avoir accès.</p>
+    </div>
+
+    <!-- 07 VOS DROITS -->
+    <div class="section">
+      <p class="section-label">07 — Vos droits RGPD</p>
+      <h2 class="section-heading">Vos données. <em>Vos droits.</em></h2>
+      <p class="text">Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants sur vos données personnelles :</p>
+
+      <ul class="rights-list">
+        <li><strong>Accès</strong> — obtenir une copie des données vous concernant</li>
+        <li><strong>Rectification</strong> — corriger des données inexactes ou incomplètes</li>
+        <li><strong>Effacement</strong> — demander la suppression de vos données</li>
+        <li><strong>Portabilité</strong> — recevoir vos données dans un format structuré et lisible</li>
+        <li><strong>Opposition</strong> — vous opposer à un traitement vous concernant</li>
+        <li><strong>Limitation</strong> — limiter temporairement l'utilisation de vos données</li>
+        <li><strong>Retrait du consentement</strong> — retirer à tout moment votre consentement, sans effet rétroactif sur les traitements déjà effectués</li>
+      </ul>
+
+      <div class="highlight">
+        <p>Pour exercer l'un de ces droits, adressez votre demande à <strong>contact@rachid.fr</strong>. Réponse garantie dans un délai maximum de <strong>30 jours</strong>.</p>
+        <p style="margin-top: 10px;">Vous pouvez également introduire une réclamation auprès de la <strong><a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a></strong> — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07.</p>
+      </div>
+    </div>
+
+    <!-- 08 MISE À JOUR -->
+    <div class="section">
+      <p class="section-label">08 — Mise à jour</p>
+      <h2 class="section-heading">Une politique <em>vivante.</em></h2>
+      <p class="text">Cette politique de confidentialité peut être mise à jour pour refléter des évolutions légales, réglementaires ou techniques. La version en vigueur est toujours accessible sur cette page, datée en bas de document. En cas de modification substantielle, une information sera publiée sur le site.</p>
+      <p class="text" style="margin-top: 24px; font-size: 12px; color: var(--text-mute);">Dernière mise à jour : mai 2026 · Version 1.0</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faire une demande — Rachid·</title>
+  <meta name="description" content="Décrivez votre produit, joignez une photo. Rachid vous répond sous 48h avec un prix transparent, tout inclus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #111111;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.88);
+      --text-soft:   rgba(255,255,255,0.75);
+      --text-mute:   rgba(255,255,255,0.58);
+      --border:      rgba(255,255,255,0.09);
+      --border-gold: rgba(201,169,110,0.28);
+      --input-bg:    rgba(255,255,255,0.06);
+      --input-focus: rgba(201,169,110,0.15);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--sans); font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .page-header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 64px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .page-logo { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--white); }
+    .page-logo span { color: var(--gold); }
+    .page-back {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-mute);
+      transition: color 0.3s; display: flex; align-items: center; gap: 8px;
+    }
+    .page-back::before { content: '←'; font-size: 12px; }
+    .page-back:hover { color: var(--gold); }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 64px 100px;
+    }
+
+    /* ── FORMULAIRE ── */
+    .form-header {
+      margin-bottom: 48px;
+      padding-bottom: 36px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .form-title {
+      font-family: var(--serif);
+      font-size: 48px; font-weight: 300;
+      color: var(--white); line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .form-title em { font-style: italic; color: var(--gold); }
+
+    .form-desc {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    /* ── GROUPES ── */
+    .form-group {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .form-group:last-of-type { border-bottom: none; }
+
+    .group-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .group-label::after {
+      content: ''; flex: 1; height: 0.5px; background: var(--border);
+    }
+
+    /* ── GRILLES ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    /* ── CHAMPS ── */
+    .field { display: flex; flex-direction: column; gap: 8px; }
+
+    .field label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-soft);
+    }
+    .field label .req { color: var(--gold); margin-left: 3px; }
+    .field label .opt {
+      font-size: 10px; letter-spacing: 0.1em; color: var(--text-mute);
+      font-weight: 400; margin-left: 4px; text-transform: none;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      background: var(--input-bg);
+      border: 0.5px solid var(--border);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 300;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--text-mute); }
+
+    .field select option { background: #1a1a1a; color: #ffffff; }
+    .field select optgroup { background: #e8e8e8; color: #222222; font-weight: 600; font-style: normal; }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(201,169,110,0.5);
+      background: var(--input-focus);
+    }
+
+    .field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96E' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .field select option { background: #1a1a1a; color: var(--white); }
+
+    .field textarea { resize: vertical; min-height: 160px; line-height: 1.7; }
+
+    /* ── RADIO PROFIL ── */
+    .radio-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .radio-card {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .radio-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+
+    .radio-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 20px;
+      border: 0.5px solid var(--border);
+      background: var(--input-bg);
+      transition: border-color 0.25s, background 0.25s;
+      cursor: pointer;
+    }
+
+    .radio-card input:checked + .radio-card-body {
+      border-color: rgba(201,169,110,0.6);
+      background: rgba(201,169,110,0.08);
+    }
+
+    .radio-card-title {
+      font-size: 13px; font-weight: 500; color: var(--white);
+    }
+    .radio-card-desc {
+      font-size: 11px; color: var(--text-mute); line-height: 1.5;
+    }
+    .radio-card input:checked + .radio-card-body .radio-card-title {
+      color: var(--gold);
+    }
+
+    /* ── FILE DROP ── */
+    .file-drop {
+      border: 0.5px dashed rgba(201,169,110,0.3);
+      background: rgba(201,169,110,0.02);
+      padding: 32px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+      position: relative;
+    }
+    .file-drop:hover,
+    .file-drop.drag-over {
+      border-color: rgba(201,169,110,0.6);
+      background: rgba(201,169,110,0.05);
+    }
+    .file-drop input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .file-drop-icon { font-size: 28px; color: var(--gold); margin-bottom: 10px; opacity: 0.6; }
+    .file-drop-text { font-size: 13px; color: var(--text-soft); margin-bottom: 4px; }
+    .file-drop-text strong { color: var(--white); font-weight: 500; }
+    .file-drop-hint { font-size: 11px; color: var(--text-mute); }
+
+    .file-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .file-item {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(201,169,110,0.06);
+      border: 0.5px solid var(--border-gold);
+      padding: 8px 14px;
+      font-size: 12px; color: var(--text-soft);
+    }
+    .file-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-item-size { color: var(--text-mute); margin-left: 12px; flex-shrink: 0; }
+    .file-item-remove {
+      color: var(--text-mute); cursor: pointer; margin-left: 12px;
+      font-size: 14px; flex-shrink: 0; transition: color 0.2s;
+      background: none; border: none; padding: 0;
+    }
+    .file-item-remove:hover { color: rgba(220,80,80,0.8); }
+
+    /* ── RGPD ── */
+    .rgpd-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 24px;
+      border: 0.5px solid var(--border-gold);
+      background: rgba(201,169,110,0.03);
+      cursor: pointer;
+    }
+
+    .rgpd-check {
+      width: 18px; height: 18px; flex-shrink: 0;
+      border: 0.5px solid rgba(201,169,110,0.4);
+      background: var(--input-bg);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px; transition: background 0.2s, border-color 0.2s;
+    }
+    .rgpd-check.checked {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .rgpd-check-inner {
+      width: 10px; height: 7px;
+      border-left: 1.5px solid var(--bg);
+      border-bottom: 1.5px solid var(--bg);
+      transform: rotate(-45deg) translateY(-1px);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .rgpd-check.checked .rgpd-check-inner { opacity: 1; }
+
+    .rgpd-text {
+      font-size: 12px; color: var(--text-soft); line-height: 1.7;
+    }
+    .rgpd-text a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+    .rgpd-text input { display: none; }
+
+    .rgpd-error {
+      font-size: 11px; color: rgba(220,100,100,0.9);
+      margin-top: 8px; display: none;
+    }
+
+    /* ── SUBMIT ── */
+    .form-submit {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--bg);
+      background: var(--gold); border: none; cursor: pointer;
+      padding: 16px 40px;
+      transition: background 0.3s;
+      font-family: var(--sans);
+    }
+    .btn-submit:hover { background: var(--gold-lt); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .submit-note {
+      font-size: 11px; color: var(--text-mute); line-height: 1.6;
+    }
+
+    /* ── SUCCESS ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 80px 40px;
+    }
+    .form-success.show { display: block; }
+    .success-icon {
+      width: 64px; height: 64px;
+      border: 0.5px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 24px; color: var(--gold);
+    }
+    .success-title {
+      font-family: var(--serif); font-size: 36px; font-weight: 300;
+      color: var(--white); margin-bottom: 14px;
+    }
+    .success-title em { font-style: italic; color: var(--gold); }
+    .success-text {
+      font-size: 14px; color: var(--text-soft); line-height: 1.85;
+      max-width: 420px; margin: 0 auto 36px;
+    }
+    .btn-back-home {
+      display: inline-block;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-mute);
+      border: 0.5px solid var(--border);
+      padding: 12px 28px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .btn-back-home:hover { color: var(--gold); border-color: var(--border-gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page-header { padding: 18px 20px; }
+      .page-wrap { padding: 40px 20px 72px; }
+      .form-title { font-size: 36px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .radio-group { grid-template-columns: 1fr; }
+      .form-submit { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="page-header">
+    <a href="index.html" class="page-logo">Rachid<span>·</span></a>
+    <a href="index.html" class="page-back">Retour au site</a>
+  </header>
+
+  <div class="page-wrap">
+    <div id="formContainer">
+
+      <div class="form-header">
+        <h1 class="form-title">Votre demande<br><em>en détail.</em></h1>
+        <p class="form-desc">Remplissez ce formulaire avec le maximum de détails. Plus votre description est précise, plus mon devis sera ciblé et rapide.</p>
+      </div>
+
+      <form id="demandeForm" action="traitement.php" method="POST" enctype="multipart/form-data" novalidate>
+
+        <!-- IDENTITÉ -->
+        <div class="form-group">
+          <p class="group-label">Vos coordonnées</p>
+
+          <div class="grid-2" style="margin-bottom: 16px;">
+            <div class="field">
+              <label>Prénom <span class="req">*</span></label>
+              <input type="text" name="prenom" placeholder="Votre prénom" required autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label>Nom <span class="req">*</span></label>
+              <input type="text" name="nom" placeholder="Votre nom" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-bottom: 16px;">
+            <div class="field">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" name="email" placeholder="votre@email.com" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label>Téléphone <span class="req">*</span></label>
+              <input type="tel" name="telephone" placeholder="+33 6 xx xx xx xx" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label>WhatsApp <span class="opt">(optionnel)</span></label>
+              <input type="tel" name="whatsapp" placeholder="+33 6 xx xx xx xx">
+            </div>
+            <div class="field">
+              <label>Adresse <span class="opt">(optionnel)</span></label>
+              <input type="text" name="adresse" placeholder="Rue, numéro..." autocomplete="street-address">
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFIL & LOCALISATION -->
+        <div class="form-group">
+          <p class="group-label">Profil &amp; livraison</p>
+
+          <div style="margin-bottom: 16px;">
+            <div class="field">
+              <label>Vous êtes <span class="req">*</span></label>
+              <div class="radio-group" style="margin-top: 4px;">
+                <label class="radio-card">
+                  <input type="radio" name="profil" value="particulier" required>
+                  <div class="radio-card-body">
+                    <span class="radio-card-title">Particulier</span>
+                    <span class="radio-card-desc">Usage personnel ou familial</span>
+                  </div>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="profil" value="professionnel">
+                  <div class="radio-card-body">
+                    <span class="radio-card-title">Professionnel</span>
+                    <span class="radio-card-desc">Entreprise, commerce, projet</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label>Pays de livraison <span class="req">*</span></label>
+              <select name="pays" required>
+                <option value="" disabled selected>Sélectionner...</option>
+                <optgroup label="Europe">
+                  <option value="Albanie">Albanie</option>
+                  <option value="Allemagne">Allemagne</option>
+                  <option value="Andorre">Andorre</option>
+                  <option value="Autriche">Autriche</option>
+                  <option value="Belgique">Belgique</option>
+                  <option value="Biélorussie">Biélorussie</option>
+                  <option value="Bosnie-Herzégovine">Bosnie-Herzégovine</option>
+                  <option value="Bulgarie">Bulgarie</option>
+                  <option value="Chypre">Chypre</option>
+                  <option value="Croatie">Croatie</option>
+                  <option value="Danemark">Danemark</option>
+                  <option value="Espagne">Espagne</option>
+                  <option value="Estonie">Estonie</option>
+                  <option value="Finlande">Finlande</option>
+                  <option value="France">France</option>
+                  <option value="Grèce">Grèce</option>
+                  <option value="Hongrie">Hongrie</option>
+                  <option value="Irlande">Irlande</option>
+                  <option value="Islande">Islande</option>
+                  <option value="Italie">Italie</option>
+                  <option value="Kosovo">Kosovo</option>
+                  <option value="Lettonie">Lettonie</option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lituanie">Lituanie</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Macédoine du Nord">Macédoine du Nord</option>
+                  <option value="Malte">Malte</option>
+                  <option value="Moldavie">Moldavie</option>
+                  <option value="Monaco">Monaco</option>
+                  <option value="Monténégro">Monténégro</option>
+                  <option value="Norvège">Norvège</option>
+                  <option value="Pays-Bas">Pays-Bas</option>
+                  <option value="Pologne">Pologne</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="République tchèque">République tchèque</option>
+                  <option value="Roumanie">Roumanie</option>
+                  <option value="Royaume-Uni">Royaume-Uni</option>
+                  <option value="Saint-Marin">Saint-Marin</option>
+                  <option value="Serbie">Serbie</option>
+                  <option value="Slovaquie">Slovaquie</option>
+                  <option value="Slovénie">Slovénie</option>
+                  <option value="Suède">Suède</option>
+                  <option value="Suisse">Suisse</option>
+                  <option value="Ukraine">Ukraine</option>
+                </optgroup>
+                <optgroup label="Maghreb">
+                  <option value="Algérie">Algérie</option>
+                  <option value="Maroc">Maroc</option>
+                  <option value="Tunisie">Tunisie</option>
+                </optgroup>
+                <optgroup label="Amérique du Nord">
+                  <option value="Canada">Canada</option>
+                </optgroup>
+                <optgroup label="Autre">
+                  <option value="Autre">Autre pays...</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="field">
+              <label>Ville <span class="req">*</span></label>
+              <input type="text" name="ville" placeholder="Votre ville" required autocomplete="address-level2">
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUIT -->
+        <div class="form-group">
+          <p class="group-label">Le produit</p>
+
+          <div class="field" style="margin-bottom: 16px;">
+            <label>Description détaillée <span class="req">*</span></label>
+            <textarea name="description" placeholder="Décrivez le produit : type, couleur, matière, dimensions, référence si connue, usage prévu... Plus vous êtes précis, plus mon devis sera ciblé." required></textarea>
+          </div>
+
+          <div class="grid-3">
+            <div class="field">
+              <label>Quantité souhaitée <span class="req">*</span></label>
+              <select name="quantite" required>
+                <option value="" disabled selected>Sélectionner...</option>
+                <option value="1 pièce">1 pièce</option>
+                <option value="2 à 5 pièces">2 à 5 pièces</option>
+                <option value="6 à 20 pièces">6 à 20 pièces</option>
+                <option value="20+ pièces">20+ pièces</option>
+                <option value="À définir">À définir</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Délai souhaité <span class="req">*</span></label>
+              <select name="delai" required>
+                <option value="" disabled selected>Sélectionner...</option>
+                <option value="Urgent (moins de 2 semaines)">Urgent — moins de 2 sem.</option>
+                <option value="1 mois">1 mois</option>
+                <option value="1 à 2 mois">1 à 2 mois</option>
+                <option value="Flexible">Flexible</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Budget indicatif <span class="opt">(optionnel)</span></label>
+              <select name="budget">
+                <option value="" disabled selected>Sélectionner...</option>
+                <option value="Moins de 100€">Moins de 100€</option>
+                <option value="100€ – 300€">100€ – 300€</option>
+                <option value="300€ – 500€">300€ – 500€</option>
+                <option value="500€ – 1 000€">500€ – 1 000€</option>
+                <option value="1 000€ – 3 000€">1 000€ – 3 000€</option>
+                <option value="Plus de 3 000€">Plus de 3 000€</option>
+                <option value="Pas de limite définie">Pas de limite définie</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHOTOS -->
+        <div class="form-group">
+          <p class="group-label">Photos &amp; documents</p>
+
+          <div class="file-drop" id="fileDrop">
+            <input type="file" name="fichiers[]" id="fileInput" multiple accept="image/*,.pdf,.doc,.docx">
+            <div class="file-drop-icon">↑</div>
+            <p class="file-drop-text"><strong>Glissez vos fichiers ici</strong> ou cliquez pour parcourir</p>
+            <p class="file-drop-hint">Photos, captures d'écran, PDF · Plusieurs fichiers acceptés · Max 10 Mo par fichier</p>
+          </div>
+          <div class="file-list" id="fileList"></div>
+        </div>
+
+        <!-- SOURCE -->
+        <div class="form-group">
+          <p class="group-label">Comment vous avez connu Rachid</p>
+          <div class="field">
+            <label>Source <span class="opt">(optionnel)</span></label>
+            <select name="source" id="sourceSelect">
+              <option value="" disabled selected>Sélectionner...</option>
+              <option value="Bouche à oreille">Bouche à oreille</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Google">Google</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="field" id="sourceAutreWrap" style="display:none; margin-top: 12px;">
+            <label>Précisez <span class="opt">(optionnel)</span></label>
+            <input type="text" name="source_autre" id="sourceAutre" placeholder="Dites-nous où vous avez entendu parler de Rachid...">
+          </div>
+        </div>
+
+        <!-- RGPD -->
+        <div class="form-group" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+          <p class="group-label">Consentement</p>
+
+          <div class="rgpd-wrap" id="rgpdWrap" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="rgpd-check" id="rgpdCheck">
+              <div class="rgpd-check-inner"></div>
+            </div>
+            <p class="rgpd-text">
+              <input type="checkbox" name="rgpd" id="rgpdInput" required>
+              J'accepte que mes données personnelles soient utilisées pour traiter ma demande, conformément à la
+              <a href="confidentialite-cookies.html" target="_blank">politique de confidentialité</a>.
+              Ces données ne seront jamais vendues ni transmises à des tiers. Je peux exercer mes droits à tout moment.
+            </p>
+          </div>
+          <p class="rgpd-error" id="rgpdError">Veuillez accepter la politique de confidentialité pour continuer.</p>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="form-submit">
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span>Envoyer ma demande</span>
+            <span>→</span>
+          </button>
+          <p class="submit-note">Réponse sous 48h · Aucun engagement<br>Devis gratuit, sans obligation</p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✓</div>
+      <h2 class="success-title">Demande <em>envoyée.</em></h2>
+      <p class="success-text">Merci ! J'ai bien reçu votre demande et je reviendrai vers vous avec un devis complet sous 48h. Si vous avez joint des photos, elles m'ont bien été transmises.</p>
+      <a href="index.html" class="btn-back-home">← Retour au site</a>
+    </div>
+
+  </div>
+
+<script>
+  /* ── FILE DROP ── */
+  const fileDrop  = document.getElementById('fileDrop');
+  const fileInput = document.getElementById('fileInput');
+  const fileList  = document.getElementById('fileList');
+  let selectedFiles = new DataTransfer();
+
+  function renderFiles() {
+    fileList.innerHTML = '';
+    Array.from(selectedFiles.files).forEach((file, i) => {
+      const size = file.size < 1024 * 1024
+        ? (file.size / 1024).toFixed(0) + ' Ko'
+        : (file.size / (1024 * 1024)).toFixed(1) + ' Mo';
+      const item = document.createElement('div');
+      item.className = 'file-item';
+      item.innerHTML = `
+        <span class="file-item-name">${file.name}</span>
+        <span class="file-item-size">${size}</span>
+        <button type="button" class="file-item-remove" data-index="${i}" aria-label="Supprimer">✕</button>
+      `;
+      fileList.appendChild(item);
+    });
+    fileInput.files = selectedFiles.files;
+  }
+
+  fileInput.addEventListener('change', () => {
+    Array.from(fileInput.files).forEach(f => selectedFiles.items.add(f));
+    renderFiles();
+  });
+
+  fileList.addEventListener('click', e => {
+    const btn = e.target.closest('.file-item-remove');
+    if (!btn) return;
+    const idx = parseInt(btn.dataset.index);
+    const dt = new DataTransfer();
+    Array.from(selectedFiles.files).forEach((f, i) => { if (i !== idx) dt.items.add(f); });
+    selectedFiles = dt;
+    renderFiles();
+  });
+
+  ['dragover', 'dragenter'].forEach(ev => {
+    fileDrop.addEventListener(ev, e => { e.preventDefault(); fileDrop.classList.add('drag-over'); });
+  });
+  ['dragleave', 'drop'].forEach(ev => {
+    fileDrop.addEventListener(ev, () => fileDrop.classList.remove('drag-over'));
+  });
+  fileDrop.addEventListener('drop', e => {
+    e.preventDefault();
+    Array.from(e.dataTransfer.files).forEach(f => selectedFiles.items.add(f));
+    renderFiles();
+  });
+
+  /* ── SOURCE "AUTRE" ── */
+  const sourceSelect    = document.getElementById('sourceSelect');
+  const sourceAutreWrap = document.getElementById('sourceAutreWrap');
+  const sourceAutre     = document.getElementById('sourceAutre');
+
+  sourceSelect.addEventListener('change', () => {
+    const isAutre = sourceSelect.value === 'Autre';
+    sourceAutreWrap.style.display = isAutre ? 'flex' : 'none';
+    if (!isAutre) sourceAutre.value = '';
+  });
+
+  /* ── RGPD CUSTOM CHECKBOX ── */
+  const rgpdWrap  = document.getElementById('rgpdWrap');
+  const rgpdCheck = document.getElementById('rgpdCheck');
+  const rgpdInput = document.getElementById('rgpdInput');
+  const rgpdError = document.getElementById('rgpdError');
+
+  function toggleRgpd() {
+    rgpdInput.checked = !rgpdInput.checked;
+    rgpdCheck.classList.toggle('checked', rgpdInput.checked);
+    rgpdWrap.setAttribute('aria-checked', rgpdInput.checked);
+    if (rgpdInput.checked) rgpdError.style.display = 'none';
+  }
+
+  rgpdWrap.addEventListener('click', toggleRgpd);
+  rgpdWrap.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleRgpd(); } });
+
+  /* ── VALIDATION & SUBMIT ── */
+  const form       = document.getElementById('demandeForm');
+  const submitBtn  = document.getElementById('submitBtn');
+  const formContainer = document.getElementById('formContainer');
+  const formSuccess   = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    /* RGPD check */
+    if (!rgpdInput.checked) {
+      rgpdError.style.display = 'block';
+      rgpdWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    /* Champs requis */
+    let valid = true;
+    form.querySelectorAll('[required]').forEach(field => {
+      field.style.borderColor = '';
+      if (!field.value.trim() && field.type !== 'radio' && field.type !== 'checkbox') {
+        field.style.borderColor = 'rgba(220,80,80,0.6)';
+        valid = false;
+      }
+    });
+
+    /* Radio profil */
+    const profil = form.querySelector('[name="profil"]:checked');
+    if (!profil) {
+      form.querySelectorAll('[name="profil"]').forEach(r => {
+        r.closest('.radio-card-body').style.borderColor = 'rgba(220,80,80,0.6)';
+      });
+      valid = false;
+    }
+
+    if (!valid) {
+      form.querySelector('[style*="rgba(220"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    /* Envoi */
+    submitBtn.disabled = true;
+    submitBtn.querySelector('span').textContent = 'Envoi en cours...';
+
+    try {
+      const data = new FormData(form);
+      selectedFiles.files && Array.from(selectedFiles.files).forEach(f => data.append('fichiers[]', f));
+
+      const res = await fetch('traitement.php', { method: 'POST', body: data });
+
+      if (res.ok) {
+        formContainer.style.display = 'none';
+        formSuccess.classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error();
+      }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.querySelector('span').textContent = 'Envoyer ma demande';
+      alert('Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.');
+    }
+  });
+</script>
+
+</body>
+</html>

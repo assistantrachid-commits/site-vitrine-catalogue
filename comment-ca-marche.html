@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment ça marche — Rachid·</title>
+  <meta name="description" content="Découvrez comment Rachid Ahmari trouve vos produits directement auprès des fabricants, sans intermédiaires, au prix d'usine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-soft:   rgba(255,255,255,0.65);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --border-gold: rgba(201,169,110,0.25);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 64px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .logo span { color: var(--gold); }
+
+    .back-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before {
+      content: '←';
+      font-size: 12px;
+    }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 80px 64px 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+
+    .page-intro {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-soft);
+      line-height: 1.65;
+      border-left: 1.5px solid var(--gold);
+      padding-left: 24px;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 64px 100px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .text {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .text:last-child { margin-bottom: 0; }
+
+    /* ── STEPS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 8px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 24px;
+      padding: 28px 0;
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+    }
+    .step:first-child { padding-top: 0; }
+    .step:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 300;
+      color: rgba(201,169,110,0.25);
+      line-height: 1;
+      padding-top: 4px;
+    }
+
+    .step-body {}
+
+    .step-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .step-title em { font-style: italic; color: var(--gold); }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    .step-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 0.5px solid var(--border-gold);
+      padding: 4px 10px;
+    }
+
+    /* ── DIFFERENTIATORS ── */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 8px;
+    }
+
+    .diff-item {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+
+    .diff-icon {
+      font-size: 20px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .diff-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .diff-desc {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      text-align: center;
+      padding: 48px 0 0;
+    }
+
+    .cta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 20px;
+    }
+
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 14px 32px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-gold:hover {
+      background: var(--gold-lt);
+    }
+
+    /* highlight box */
+    .highlight {
+      border: 0.5px solid var(--border-gold);
+      padding: 20px 24px;
+      margin-top: 24px;
+      background: rgba(201,169,110,0.04);
+    }
+    .highlight p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+    .highlight strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt);
+      border-top: 0.5px solid var(--border);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--text-mute);
+    }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .header { padding: 18px 20px; }
+
+      .page-hero { padding: 48px 20px 40px; }
+      .page-title { font-size: 36px; }
+      .page-intro { font-size: 16px; }
+
+      .content { padding: 48px 20px 72px; }
+
+      .step { grid-template-columns: 44px 1fr; gap: 0 16px; }
+      .step-num { font-size: 30px; }
+
+      .diff-grid { grid-template-columns: 1fr; }
+
+      .page-footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Transparence &amp; méthode</p>
+    <h1 class="page-title">Comment ça <em>marche.</em></h1>
+    <p class="page-intro">
+      Les produits que vous trouvez en magasin coûtent souvent deux à trois fois leur valeur réelle. La différence ? Les intermédiaires. Je les supprime.
+    </p>
+  </div>
+
+  <!-- CONTENU -->
+  <main class="content">
+
+    <!-- CONCEPT -->
+    <div class="section">
+      <p class="section-label">Le concept</p>
+      <h2 class="section-heading">Du fabricant à vous — directement.</h2>
+      <p class="text">Je travaille avec un réseau de fournisseurs sélectionnés à travers le monde : Asie, Europe, Moyen-Orient. Des usines, des ateliers, des grossistes que j'ai identifiés et qualifiés au fil des années.</p>
+      <p class="text">Mon rôle : trouver le bon produit, au bon endroit, au bon prix. Vous éviter les marges des distributeurs, des importateurs, des revendeurs. Vous donnez accès au prix d'usine.</p>
+      <div class="highlight">
+        <p>Ce service s'adresse aux <strong>particuliers exigeants</strong> comme aux <strong>professionnels</strong> qui cherchent à équiper leur entreprise, leur commerce ou un projet spécifique sans payer le prix fort.</p>
+      </div>
+    </div>
+
+    <!-- LES 5 ÉTAPES -->
+    <div class="section">
+      <p class="section-label">Le processus</p>
+      <h2 class="section-heading">5 étapes, zéro complication.</h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <h3 class="step-title">Vous <em>décrivez</em> votre besoin</h3>
+            <p class="step-desc">Un message suffit. Partagez le produit que vous cherchez : référence, photo, description, quantité souhaitée, budget indicatif. Plus vous êtes précis, plus ma réponse sera ciblée — mais même une idée vague est un bon point de départ.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <h3 class="step-title">Je <em>recherche</em> pour vous</h3>
+            <p class="step-desc">J'active mon réseau de fournisseurs. Je compare les sources disponibles, les prix, les délais et la qualité. Aucune démarche de votre côté — vous attendez, c'est tout.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <h3 class="step-title">Vous recevez un <em>devis clair</em></h3>
+            <p class="step-desc">Sous 48h, je vous transmets une proposition détaillée : prix TTC, frais de port inclus, délai de livraison estimé. Pas de surprises, pas de frais cachés.</p>
+            <span class="step-badge">Réponse garantie sous 48h</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">04</span>
+          <div class="step-body">
+            <h3 class="step-title">Vous <em>validez</em> — ou pas</h3>
+            <p class="step-desc">Si la proposition vous convient, vous confirmez. Si elle ne vous convient pas, vous refusez — sans aucune obligation, sans frais d'aucune sorte. Zéro engagement avant votre accord explicite.</p>
+            <span class="step-badge">Zéro frais si refus</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">05</span>
+          <div class="step-body">
+            <h3 class="step-title">Je <em>gère</em> la suite</h3>
+            <p class="step-desc">Une fois validé, je m'occupe de tout : facturation, commande auprès du fournisseur, suivi logistique, livraison. Vous êtes informé à chaque étape clé. Vous n'avez plus rien à faire.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIFFÉRENCIATEURS -->
+    <div class="section">
+      <p class="section-label">Pourquoi c'est différent</p>
+      <h2 class="section-heading">Ce que vous ne trouvez pas ailleurs.</h2>
+
+      <div class="diff-grid">
+        <div class="diff-item">
+          <div class="diff-icon">◈</div>
+          <h3 class="diff-title">Prix d'usine</h3>
+          <p class="diff-desc">Accès direct aux fabricants. Pas de distributeur, pas d'importateur, pas de revendeur. Le prix juste, point.</p>
+        </div>
+        <div class="diff-item">
+          <div class="diff-icon">◈</div>
+          <h3 class="diff-title">Multi-marchés</h3>
+          <p class="diff-desc">Je compare simultanément plusieurs sources sur différents marchés mondiaux pour identifier la meilleure offre disponible au moment de votre demande.</p>
+        </div>
+        <div class="diff-item">
+          <div class="diff-icon">◈</div>
+          <h3 class="diff-title">Zéro risque</h3>
+          <p class="diff-desc">Aucun paiement avant votre validation. Aucun frais si vous refusez le devis. Vous ne dépensez rien tant que vous n'avez pas dit oui.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section">
+      <div class="cta-block">
+        <p class="cta-label">Prêt à commencer ?</p>
+        <h2 class="cta-heading">Décrivez votre besoin.<br><em>Je m'occupe du reste.</em></h2>
+        <p class="cta-sub">Réponse sous 48h · Aucun engagement · Prix transparents</p>
+        <a href="index.html" class="btn-gold">Faire une demande →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+</body>
+</html>

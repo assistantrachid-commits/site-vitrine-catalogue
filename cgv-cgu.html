@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGV & CGU — Rachid·</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-soft:   rgba(255,255,255,0.65);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --border-gold: rgba(201,169,110,0.25);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 64px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .logo { font-family: var(--serif); font-size: 24px; font-weight: 300; color: var(--white); }
+    .logo span { color: var(--gold); }
+    .back-link {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-mute); display: flex; align-items: center; gap: 8px; transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '←'; font-size: 12px; }
+
+    /* ── NAV INTERNE ── */
+    .page-nav {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      gap: 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .page-nav-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      padding: 20px 0;
+      margin-right: 40px;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .page-nav-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 80px 64px 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .eyebrow {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: var(--serif); font-size: 56px; font-weight: 300;
+      color: var(--white); line-height: 1.05; margin-bottom: 28px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+    .page-intro { font-size: 14px; color: var(--text-soft); line-height: 1.9; }
+
+    /* ── PART SEPARATOR ── */
+    .part-header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 64px 40px;
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .part-num {
+      font-family: var(--serif);
+      font-size: 80px;
+      font-weight: 300;
+      color: rgba(201,169,110,0.12);
+      line-height: 1;
+    }
+    .part-info {}
+    .part-tag {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .part-title {
+      font-family: var(--serif); font-size: 32px; font-weight: 300;
+      color: var(--white); line-height: 1.1;
+    }
+    .part-title em { font-style: italic; color: var(--gold); }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 64px 0;
+    }
+    .content + .part-header { padding-top: 80px; }
+
+    .section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .section-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .section-heading {
+      font-family: var(--serif); font-size: 24px; font-weight: 300;
+      color: var(--white); margin-bottom: 20px; line-height: 1.2;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    .text {
+      font-size: 13.5px; color: var(--text-soft); line-height: 1.9; margin-bottom: 14px;
+    }
+    .text:last-child { margin-bottom: 0; }
+    .text strong { color: var(--white); font-weight: 500; }
+
+    /* ── DEVIS BREAKDOWN ── */
+    .devis-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    .devis-table tr { border-bottom: 0.5px solid rgba(255,255,255,0.05); }
+    .devis-table tr:last-child { border-bottom: none; }
+    .devis-table td {
+      padding: 14px 0;
+      font-size: 13px;
+      line-height: 1.6;
+      vertical-align: top;
+    }
+    .devis-table td:first-child {
+      color: rgba(255,255,255,0.45); font-weight: 500;
+      letter-spacing: 0.04em; width: 260px; padding-right: 24px;
+    }
+    .devis-table td:last-child { color: rgba(255,255,255,0.78); }
+    .devis-table tr.devis-total td { padding-top: 18px; }
+    .devis-table tr.devis-total td:first-child { color: var(--gold); }
+    .devis-table tr.devis-total td:last-child {
+      color: var(--white); font-weight: 500; font-size: 14px;
+    }
+
+    /* ── TRANSPORTEURS ── */
+    .carriers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    .carrier-item {
+      background: var(--bg);
+      padding: 20px 24px;
+    }
+    .carrier-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .carrier-desc {
+      font-size: 12px;
+      color: var(--text-mute);
+      line-height: 1.7;
+    }
+
+    /* ── LISTE À PUCES ── */
+    .dot-list {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .dot-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    .dot-list li::before {
+      content: '·';
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+    .dot-list li strong { color: var(--white); font-weight: 500; }
+
+    /* ── HIGHLIGHT ── */
+    .highlight {
+      border: 0.5px solid var(--border-gold);
+      padding: 20px 24px;
+      margin-top: 20px;
+      background: rgba(201,169,110,0.04);
+    }
+    .highlight p {
+      font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.8;
+    }
+    .highlight p + p { margin-top: 10px; }
+    .highlight strong { color: var(--gold); font-weight: 500; }
+    .highlight a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── INFO TABLE ── */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .info-table tr { border-bottom: 0.5px solid rgba(255,255,255,0.04); }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table td {
+      padding: 12px 0;
+      font-size: 13px;
+      line-height: 1.6;
+      vertical-align: top;
+    }
+    .info-table td:first-child {
+      color: rgba(255,255,255,0.45); font-weight: 500;
+      letter-spacing: 0.04em; width: 220px; padding-right: 24px;
+    }
+    .info-table td:last-child { color: rgba(255,255,255,0.78); }
+
+    /* ── SEPARATEUR FINAL ── */
+    .final-sep {
+      max-width: 860px;
+      margin: 64px auto 0;
+      padding: 0 64px 100px;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt);
+      border-top: 0.5px solid var(--border);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: 11px; color: var(--text-mute); }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-mute); transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .header { padding: 18px 20px; }
+      .page-nav { padding: 0 20px; }
+      .page-hero { padding: 48px 20px 40px; }
+      .page-title { font-size: 36px; }
+      .part-header { padding: 48px 20px 32px; }
+      .part-num { font-size: 56px; }
+      .part-title { font-size: 24px; }
+      .content { padding: 48px 20px 0; }
+      .final-sep { padding: 0 20px 72px; }
+      .carriers { grid-template-columns: 1fr; }
+      .info-table td:first-child { width: 140px; padding-right: 16px; }
+      .devis-table td:first-child { width: 160px; padding-right: 16px; }
+      .page-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- NAV INTERNE -->
+  <nav class="page-nav">
+    <a href="#cgv" class="page-nav-link">Conditions de vente</a>
+    <a href="#cgu" class="page-nav-link">Conditions d'utilisation</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Clarté &amp; confiance</p>
+    <h1 class="page-title">Conditions <em>générales.</em></h1>
+    <p class="page-intro">Ces conditions définissent les règles du jeu — de façon claire, honnête et sans jargon inutile. Elles sont conçues pour vous protéger autant que pour encadrer notre relation commerciale. Lisez-les sereinement : rien d'abusif ici.</p>
+  </div>
+
+  <!-- ════════════════════════════════════
+       PARTIE 1 — CGV
+  ════════════════════════════════════ -->
+
+  <div class="part-header" id="cgv">
+    <span class="part-num">01</span>
+    <div class="part-info">
+      <p class="part-tag">CGV</p>
+      <h2 class="part-title">Conditions Générales<br>de <em>Vente</em></h2>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- 1.1 OBJET -->
+    <div class="section">
+      <p class="section-label">1.1 — Objet du service</p>
+      <h3 class="section-heading">Un service de sourcing, <em>pas une boutique.</em></h3>
+      <p class="text">Rachid Ahmari, Entreprise Individuelle, SIRET 890 579 873, propose un service d'acquisition et de sourcing de produits auprès d'un réseau de fournisseurs internationaux qualifiés. Il ne s'agit pas d'un site marchand disposant d'un stock propre : chaque commande est traitée sur-mesure, à la demande, après échange direct avec le client.</p>
+      <p class="text">Les présentes CGV régissent toute relation commerciale entre Rachid Ahmari et ses clients, qu'ils soient particuliers ou professionnels, à compter de la validation d'un devis.</p>
+    </div>
+
+    <!-- 1.2 PROCESSUS -->
+    <div class="section">
+      <p class="section-label">1.2 — Processus de commande</p>
+      <h3 class="section-heading">De la demande à la <em>livraison.</em></h3>
+      <p class="text">Toute commande suit le processus suivant :</p>
+      <ul class="dot-list" style="margin-top: 16px;">
+        <li><strong>Demande client</strong> — description du produit souhaité par message ou email</li>
+        <li><strong>Recherche fournisseur</strong> — identification et comparaison des sources disponibles</li>
+        <li><strong>Émission du devis</strong> — proposition détaillée transmise sous 48h, valable 7 jours</li>
+        <li><strong>Validation client</strong> — accord explicite par retour écrit (message ou email)</li>
+        <li><strong>Paiement</strong> — règlement à la commande, après validation du devis uniquement</li>
+        <li><strong>Commande fournisseur &amp; expédition</strong> — prise en charge complète par Rachid Ahmari</li>
+        <li><strong>Livraison</strong> — remise du colis au client, toutes formalités accomplies</li>
+      </ul>
+      <div class="highlight">
+        <p>Le contrat est formé au moment de la <strong>validation écrite du devis</strong> par le client. Aucun engagement n'existe avant cet accord explicite. Aucun paiement n'est demandé avant cette étape.</p>
+      </div>
+    </div>
+
+    <!-- 1.3 PRIX & TRANSPARENCE -->
+    <div class="section">
+      <p class="section-label">1.3 — Prix &amp; transparence</p>
+      <h3 class="section-heading">Ce que vous payez. <em>Exactement.</em></h3>
+      <p class="text">Chaque devis détaille précisément la composition du prix final. Aucun frais caché, aucune surprise à la livraison. Voici la structure systématique de tout devis émis :</p>
+      <table class="devis-table">
+        <tr>
+          <td>Prix produit</td>
+          <td>Prix d'achat auprès du fournisseur, négocié au plus juste</td>
+        </tr>
+        <tr>
+          <td>Droits &amp; taxes d'importation</td>
+          <td>Droits de douane, TVA import, formalités douanières — intégralement pris en charge et inclus dans le devis</td>
+        </tr>
+        <tr>
+          <td>Transport</td>
+          <td>FedEx ou DHL selon le meilleur rapport prix/délai au moment de l'expédition — inclus dans le devis</td>
+        </tr>
+        <tr>
+          <td>Commission de service</td>
+          <td>10% du prix produit — rémunération du sourcing, de la négociation, du contrôle qualité et du suivi complet</td>
+        </tr>
+        <tr class="devis-total">
+          <td>Total TTC</td>
+          <td>Tout inclus. Aucun frais supplémentaire à prévoir.</td>
+        </tr>
+      </table>
+      <p class="text">Le devis est valable <strong>7 jours</strong> à compter de sa date d'émission. Passé ce délai, les prix peuvent être actualisés selon les conditions du marché.</p>
+    </div>
+
+    <!-- 1.4 TRANSPORTEURS & LIVRAISON DDP -->
+    <div class="section">
+      <p class="section-label">1.4 — Transport &amp; livraison</p>
+      <h3 class="section-heading">Livraison <em>DDP</em> — tout inclus, rien à régler.</h3>
+      <p class="text">Les expéditions sont assurées par <strong>FedEx</strong> ou <strong>DHL</strong>, sélectionnés en fonction du meilleur rapport qualité/prix disponible au moment de l'expédition. Ce choix est effectué par Rachid Ahmari dans l'intérêt du client, sans supplément.</p>
+      <div class="carriers">
+        <div class="carrier-item">
+          <p class="carrier-name">FedEx</p>
+          <p class="carrier-desc">Réseau mondial, suivi en temps réel, fiabilité internationale reconnue.</p>
+        </div>
+        <div class="carrier-item">
+          <p class="carrier-name">DHL</p>
+          <p class="carrier-desc">Spécialiste du fret international, couverture mondiale, délais maîtrisés.</p>
+        </div>
+      </div>
+      <p class="text">Toutes les livraisons sont effectuées en <strong>DDP (Delivered Duty Paid)</strong> : droits de douane, TVA import et formalités d'importation sont intégralement réglés par Rachid Ahmari avant expédition. À la réception, le client n'a aucun frais supplémentaire à acquitter. Il signe, c'est tout.</p>
+      <p class="text">Un numéro de suivi est communiqué dès l'expédition. Le client est informé en temps réel à chaque étape clé du transport. En cas d'anomalie en transit, Rachid Ahmari prend en charge les démarches auprès du transporteur sans intervention du client.</p>
+      <p class="text">Délais estimés : <strong>5 à 10 jours ouvrés</strong> depuis l'Europe, <strong>15 à 30 jours ouvrés</strong> depuis l'Asie, le Moyen-Orient ou toute autre origine internationale. Ces délais sont communiqués dans le devis.</p>
+    </div>
+
+    <!-- 1.5 TRANSFERT DE PROPRIÉTÉ & RISQUES -->
+    <div class="section">
+      <p class="section-label">1.5 — Propriété &amp; risques</p>
+      <h3 class="section-heading">À partir de quand le produit <em>vous appartient.</em></h3>
+      <p class="text"><strong>Réserve de propriété</strong> — Les produits demeurent la propriété de Rachid Ahmari jusqu'au paiement intégral et effectif du prix convenu. Aucun risque, aucune responsabilité sur le produit ne peut être transféré avant ce règlement complet.</p>
+      <p class="text"><strong>Transfert de propriété et des risques — clients particuliers</strong> — Conformément à l'article L216-4 du Code de la consommation, les risques liés au transport sont supportés par Rachid Ahmari jusqu'à la livraison physique effective au client. En cas de perte ou de dommage constaté durant le transport, Rachid Ahmari prend en charge les démarches auprès du transporteur et propose au client un remplacement ou un remboursement intégral, selon sa préférence.</p>
+      <p class="text"><strong>Transfert de propriété et des risques — clients professionnels</strong> — Pour les commandes passées par des professionnels, le transfert des risques s'effectue dès la remise des marchandises au transporteur, sauf accord contraire mentionné expressément dans le devis.</p>
+    </div>
+
+    <!-- 1.6 GARANTIES -->
+    <div class="section">
+      <p class="section-label">1.6 — Garanties</p>
+      <h3 class="section-heading">Protégé par la loi. <em>Et par mon engagement.</em></h3>
+      <p class="text">Chaque produit livré bénéficie des garanties légales suivantes, indépendamment de toute garantie commerciale accordée par le fournisseur :</p>
+      <ul class="dot-list" style="margin-top: 16px; margin-bottom: 20px;">
+        <li><strong>Garantie légale de conformité</strong> — articles L217-4 à L217-14 du Code de la consommation. Durée : 2 ans à compter de la livraison.</li>
+        <li><strong>Garantie contre les vices cachés</strong> — articles 1641 à 1649 du Code civil. Action possible dans les 2 ans suivant la découverte du vice.</li>
+      </ul>
+      <p class="text">En complément, une <strong>garantie commerciale fournisseur</strong> s'applique sur les défauts de fabrication. Sa durée varie selon le fournisseur et le produit — généralement de 6 mois à 1 an, parfois davantage. Elle est précisée dans chaque devis.</p>
+      <p class="text">En cas de problème, Rachid Ahmari gère directement le traitement auprès du fournisseur. Le client n'a pas à contacter de SAV étranger ni à gérer de procédure dans une langue étrangère.</p>
+    </div>
+
+    <!-- 1.7 DROIT DE RÉTRACTATION -->
+    <div class="section">
+      <p class="section-label">1.7 — Droit de rétractation</p>
+      <h3 class="section-heading">15 jours. <em>Sans condition.</em></h3>
+      <p class="text">Conformément à l'article L221-18 du Code de la consommation, tout client particulier dispose d'un délai de <strong>15 jours calendaires</strong> à compter de la réception du produit pour exercer son droit de rétractation, sans avoir à motiver sa décision ni à supporter de pénalité.</p>
+      <p class="text">Pour exercer ce droit : contacter Rachid Ahmari par message ou email, retourner le produit en bon état dans son emballage d'origine, et recevoir un remboursement intégral dès réception et vérification du retour. Les frais de retour sont à la charge du client dans ce cas.</p>
+      <div class="highlight">
+        <p><strong>Exception légale (article L221-28 Code de la consommation)</strong> — Le droit de rétractation ne s'applique pas aux produits clairement personnalisés ou sourcés sur-mesure selon des spécifications précises transmises par le client, et non susceptibles d'être revendus à un tiers. Ce caractère sur-mesure est expressément mentionné dans le devis concerné.</p>
+      </div>
+    </div>
+
+    <!-- 1.8 CONTRÔLE QUALITÉ -->
+    <div class="section">
+      <p class="section-label">1.8 — Contrôle qualité</p>
+      <h3 class="section-heading">Vérifié avant de partir. <em>Conforme à l'arrivée.</em></h3>
+      <p class="text">Avant toute expédition, une vérification est effectuée pour s'assurer que le produit correspond exactement à ce qui a été convenu : conformité de la référence, état général, emballage, documentation douanière. Si un point ne correspond pas, le colis est bloqué avant départ et le client est immédiatement contacté avec une solution alternative.</p>
+    </div>
+
+    <!-- 1.9 FORCE MAJEURE -->
+    <div class="section">
+      <p class="section-label">1.9 — Force majeure</p>
+      <h3 class="section-heading">Les situations <em>exceptionnelles.</em></h3>
+      <p class="text">Rachid Ahmari ne pourra être tenu responsable d'un retard ou d'une inexécution résultant d'un cas de force majeure au sens de l'article 1218 du Code civil : grèves portuaires ou aéroportuaires, blocages douaniers liés à une décision gouvernementale, catastrophe naturelle, crise sanitaire, conflit armé, ou tout autre événement imprévisible, irrésistible et extérieur.</p>
+      <p class="text">En cas de force majeure, Rachid Ahmari informera le client dans les meilleurs délais et proposera une solution alternative — report de commande ou remboursement intégral — selon la durée et la nature de l'événement.</p>
+    </div>
+
+    <!-- 1.10 RESPONSABILITÉ -->
+    <div class="section">
+      <p class="section-label">1.10 — Responsabilité</p>
+      <h3 class="section-heading">Obligation de moyens, <em>transparence totale.</em></h3>
+      <p class="text">Rachid Ahmari est tenu à une <strong>obligation de moyens</strong> dans la recherche, la sélection et l'acheminement des produits. Sa responsabilité ne pourra être engagée qu'en cas de faute prouvée directement imputable à ses actions ou omissions.</p>
+      <p class="text">En tout état de cause, la responsabilité de Rachid Ahmari est limitée au montant total de la commande concernée. Aucune responsabilité ne saurait être engagée pour des dommages indirects, pertes d'exploitation ou préjudices immatériels.</p>
+    </div>
+
+    <!-- 1.11 ARCHIVAGE -->
+    <div class="section">
+      <p class="section-label">1.11 — Archivage du contrat</p>
+      <h3 class="section-heading">Votre transaction, <em>conservée et accessible.</em></h3>
+      <p class="text">Conformément à la réglementation en vigueur, tout devis validé et toute facture émise sont archivés pendant <strong>10 ans</strong> à compter de leur date d'émission. Ces documents constituent la preuve contractuelle de la transaction et peuvent être communiqués au client sur demande à tout moment durant cette période.</p>
+    </div>
+
+    <!-- 1.12 MÉDIATION -->
+    <div class="section">
+      <p class="section-label">1.12 — Médiation consommateur</p>
+      <h3 class="section-heading">Un litige ? <em>On en parle d'abord.</em></h3>
+      <p class="text">Conformément aux articles L611-1 et suivants du Code de la consommation, tout client particulier peut, en cas de litige non résolu à l'amiable dans un délai de 60 jours, recourir gratuitement à un médiateur de la consommation.</p>
+      <div class="highlight">
+        <p>Médiateur compétent : <strong>CM2C — Centre de Médiation de la Consommation de Conciliateurs de Justice</strong><br>
+        Site : <a href="https://www.cm2c.net" target="_blank" rel="noopener">www.cm2c.net</a> · Email : cm2c@cm2c.net · Courrier : 49 rue de Ponthieu, 75008 Paris</p>
+        <p style="margin-top: 10px;">Plateforme européenne de résolution en ligne des litiges (RLL) : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a></p>
+      </div>
+    </div>
+
+    <!-- 1.13 DROIT APPLICABLE -->
+    <div class="section">
+      <p class="section-label">1.13 — Droit applicable &amp; juridiction</p>
+      <h3 class="section-heading">Droit français. <em>Tribunaux de Toulouse.</em></h3>
+      <p class="text">Les présentes CGV sont soumises au droit français. En cas de litige, et après tentative de résolution amiable ou de médiation, les tribunaux compétents sont ceux du ressort de Toulouse.</p>
+      <p class="text"><strong>Nullité partielle</strong> — Si une clause des présentes CGV venait à être déclarée nulle ou inapplicable par une juridiction compétente, les autres clauses demeurent pleinement en vigueur.</p>
+    </div>
+
+  </div><!-- /content CGV -->
+
+  <!-- ════════════════════════════════════
+       PARTIE 2 — CGU
+  ════════════════════════════════════ -->
+
+  <div class="part-header" id="cgu">
+    <span class="part-num">02</span>
+    <div class="part-info">
+      <p class="part-tag">CGU</p>
+      <h2 class="part-title">Conditions Générales<br>d'<em>Utilisation</em></h2>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- 2.1 OBJET -->
+    <div class="section">
+      <p class="section-label">2.1 — Nature du site</p>
+      <h3 class="section-heading">Un site <em>vitrine</em>, pas une boutique en ligne.</h3>
+      <p class="text">Le site rachid.fr est un site de présentation d'activité à usage informatif. Il ne constitue pas un site de vente en ligne au sens strict : aucune transaction n'est effectuée directement via le site. Toute commande fait l'objet d'un échange direct entre le client et Rachid Ahmari, suivi d'un devis personnalisé.</p>
+      <p class="text">L'accès au site est libre et gratuit. Il implique l'acceptation pleine et entière des présentes CGU.</p>
+    </div>
+
+    <!-- 2.2 ACCÈS & DISPONIBILITÉ -->
+    <div class="section">
+      <p class="section-label">2.2 — Accès &amp; disponibilité</p>
+      <h3 class="section-heading">Accès libre, <em>disponibilité raisonnable.</em></h3>
+      <p class="text">Rachid Ahmari s'efforce de maintenir le site accessible 24h/24 et 7j/7. Cependant, des interruptions peuvent survenir pour des opérations de maintenance, de mise à jour ou pour des raisons techniques indépendantes de sa volonté. Ces interruptions ne donnent lieu à aucune indemnisation.</p>
+    </div>
+
+    <!-- 2.3 PROPRIÉTÉ INTELLECTUELLE -->
+    <div class="section">
+      <p class="section-label">2.3 — Propriété intellectuelle</p>
+      <h3 class="section-heading">Un contenu <em>protégé.</em></h3>
+      <p class="text">L'ensemble des contenus présents sur ce site — textes, visuels, structure, logo, organisation — est la propriété exclusive de Rachid Ahmari ou fait l'objet d'une autorisation d'utilisation. Toute reproduction, représentation ou exploitation, même partielle, sans accord écrit préalable, est strictement interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.</p>
+    </div>
+
+    <!-- 2.4 USAGE LICITE -->
+    <div class="section">
+      <p class="section-label">2.4 — Usage licite</p>
+      <h3 class="section-heading">Une utilisation <em>responsable.</em></h3>
+      <p class="text">L'utilisateur s'engage à utiliser le site dans le respect des lois et réglementations en vigueur. Il est notamment interdit d'utiliser le site à des fins illicites, d'en perturber le fonctionnement, d'y introduire des virus ou tout autre contenu nuisible, ou de tenter d'accéder à des données qui ne lui sont pas destinées.</p>
+    </div>
+
+    <!-- 2.5 DONNÉES PERSONNELLES -->
+    <div class="section">
+      <p class="section-label">2.5 — Données personnelles &amp; cookies</p>
+      <h3 class="section-heading">Vos données, <em>vos droits.</em></h3>
+      <p class="text">Le traitement des données personnelles collectées via le site est détaillé dans les <a href="mentions-legales.html" style="color: var(--gold); text-decoration: underline; text-underline-offset: 3px;">Mentions légales</a>. Conformément au RGPD et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition sur vos données.</p>
+      <p class="text">Le site utilise uniquement des cookies techniques strictement nécessaires à son fonctionnement. Aucun cookie publicitaire, analytique ou de suivi tiers n'est déposé sur votre terminal.</p>
+    </div>
+
+    <!-- 2.6 LIENS HYPERTEXTES -->
+    <div class="section">
+      <p class="section-label">2.6 — Liens hypertextes</p>
+      <h3 class="section-heading">Sites tiers, <em>responsabilité distincte.</em></h3>
+      <p class="text">Le site peut contenir des liens vers des sites web tiers fournis à titre informatif uniquement. Rachid Ahmari n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leurs contenus, politiques de confidentialité ou pratiques commerciales.</p>
+    </div>
+
+    <!-- 2.7 MODIFICATION DES CGU -->
+    <div class="section">
+      <p class="section-label">2.7 — Évolution des CGU</p>
+      <h3 class="section-heading">Des conditions <em>à jour.</em></h3>
+      <p class="text">Rachid Ahmari se réserve le droit de modifier les présentes CGU à tout moment, notamment pour s'adapter à des évolutions légales, réglementaires ou techniques. La version en vigueur est celle accessible sur le site à la date de la visite. La poursuite de l'utilisation du site après modification vaut acceptation des nouvelles conditions.</p>
+    </div>
+
+    <!-- 2.8 DROIT APPLICABLE -->
+    <div class="section">
+      <p class="section-label">2.8 — Droit applicable</p>
+      <h3 class="section-heading">Droit français. <em>Tribunaux de Toulouse.</em></h3>
+      <p class="text">Les présentes CGU sont régies par le droit français. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence exclusive des tribunaux du ressort de Toulouse, sauf disposition légale impérative contraire.</p>
+    </div>
+
+  </div><!-- /content CGU -->
+
+  <div class="final-sep">
+    <p class="text" style="font-size: 12px; color: var(--text-mute); text-align: center; padding-top: 40px; border-top: 0.5px solid var(--border);">Dernière mise à jour : mai 2026 · Ces conditions s'appliquent à toute relation commerciale initiée à compter de cette date.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+</body>
+</html>

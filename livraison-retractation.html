@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livraison, Garantie & Rétractation — Rachid·</title>
+  <meta name="description" content="Tout ce que vous devez savoir sur la livraison, la garantie et le droit de rétractation — transparent, sans conditions abusives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-soft:   rgba(255,255,255,0.65);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --border-gold: rgba(201,169,110,0.25);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 64px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .logo span { color: var(--gold); }
+
+    .back-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '←'; font-size: 12px; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 80px 64px 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+
+    .page-intro {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.9;
+    }
+
+    /* ── REASSURANCE STRIP ── */
+    .reassurance {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .reassurance-item {
+      background: var(--bg);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .reassurance-num {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .reassurance-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 64px 100px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    .text {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .text:last-child { margin-bottom: 0; }
+
+    /* ── DÉLAIS TABLE ── */
+    .delais-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+
+    .delai-item {
+      background: var(--bg);
+      padding: 24px;
+    }
+
+    .delai-zone {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 8px;
+    }
+
+    .delai-duree {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .delai-duree em { font-style: italic; color: var(--gold); }
+
+    .delai-note {
+      font-size: 11px;
+      color: var(--text-mute);
+      line-height: 1.6;
+    }
+
+    /* ── HIGHLIGHT ── */
+    .highlight {
+      border: 0.5px solid var(--border-gold);
+      padding: 20px 24px;
+      margin-top: 24px;
+      background: rgba(201,169,110,0.04);
+    }
+    .highlight p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+    .highlight strong { color: var(--gold); font-weight: 500; }
+
+    /* ── QUALITY STEPS ── */
+    .quality-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .quality-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .quality-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── RETRACTATION STEPS ── */
+    .retract-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+
+    .retract-step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0 16px;
+      padding: 16px 0;
+      border-bottom: 0.5px solid var(--border);
+      align-items: start;
+    }
+    .retract-step:first-child { padding-top: 0; }
+    .retract-step:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .retract-step-n {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(201,169,110,0.4);
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .retract-step-text {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+    .retract-step-text strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 8px;
+    }
+
+    .faq-item {
+      padding: 24px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .faq-item:first-child { padding-top: 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .faq-q {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .faq-a {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+    .faq-a strong { color: var(--gold); font-weight: 500; }
+
+    /* ── ENGAGEMENT BLOCK ── */
+    .engagement {
+      border: 0.5px solid var(--border-gold);
+      padding: 36px 40px;
+      background: rgba(201,169,110,0.03);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .engagement-text {}
+
+    .engagement-name {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .engagement-name em { font-style: italic; color: var(--gold); }
+
+    .engagement-desc {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    .engagement-badge {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .engagement-circle {
+      width: 80px;
+      height: 80px;
+      border: 0.5px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .engagement-circle span:first-child {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .engagement-circle span:last-child {
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      text-align: center;
+      padding: 48px 0 0;
+    }
+
+    .cta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 20px;
+    }
+
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .cta-heading em { font-style: italic; color: var(--gold); }
+
+    .cta-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 14px 32px;
+      transition: background 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt);
+      border-top: 0.5px solid var(--border);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: 11px; color: var(--text-mute); }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .header { padding: 18px 20px; }
+
+      .page-hero { padding: 48px 20px 40px; }
+      .page-title { font-size: 36px; }
+
+      .reassurance { grid-template-columns: repeat(2, 1fr); }
+
+      .content { padding: 48px 20px 72px; }
+
+      .delais-grid { grid-template-columns: 1fr; }
+
+      .engagement {
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+        text-align: center;
+      }
+      .engagement-badge { display: flex; justify-content: center; }
+
+      .page-footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Livraison · Garantie · Rétractation</p>
+    <h1 class="page-title">Votre commande,<br><em>protégée.</em></h1>
+    <p class="page-intro">De la recherche du produit à sa livraison chez vous — chaque étape est sécurisée, transparente et sans mauvaise surprise. Voici exactement ce à quoi vous avez droit, et ce que je m'engage à tenir.</p>
+  </div>
+
+  <!-- BANDE CHIFFRES -->
+  <div class="reassurance">
+    <div class="reassurance-item">
+      <span class="reassurance-num">48h</span>
+      <span class="reassurance-label">Délai de réponse</span>
+    </div>
+    <div class="reassurance-item">
+      <span class="reassurance-num">15j</span>
+      <span class="reassurance-label">Droit de rétractation</span>
+    </div>
+    <div class="reassurance-item">
+      <span class="reassurance-num">1 an</span>
+      <span class="reassurance-label">Garantie min.</span>
+    </div>
+    <div class="reassurance-item">
+      <span class="reassurance-num">0€</span>
+      <span class="reassurance-label">Frais si refus</span>
+    </div>
+  </div>
+
+  <!-- CONTENU -->
+  <main class="content">
+
+    <!-- 01 LIVRAISON -->
+    <div class="section">
+      <p class="section-label">01 — Livraison</p>
+      <h2 class="section-heading">Mondiale, transparente, <em>suivie.</em></h2>
+
+      <p class="text">Chaque produit vient de là où il est fabriqué le mieux — et au meilleur prix. Le délai de livraison dépend donc du pays d'origine du fournisseur retenu pour votre commande. Ces délais vous sont communiqués dans votre devis, avant tout engagement de votre part.</p>
+
+      <div class="delais-grid">
+        <div class="delai-item">
+          <p class="delai-zone">Europe</p>
+          <p class="delai-duree">5 à <em>10 jours</em></p>
+          <p class="delai-note">Jours ouvrés. Transporteurs partenaires sélectionnés pour leur fiabilité.</p>
+        </div>
+        <div class="delai-item">
+          <p class="delai-zone">Asie · Moyen-Orient · International</p>
+          <p class="delai-duree">15 à <em>30 jours</em></p>
+          <p class="delai-note">Jours ouvrés. Délai variable selon mode d'expédition et origine exacte.</p>
+        </div>
+      </div>
+
+      <p class="text">Dès l'expédition de votre commande, vous recevez un numéro de suivi complet. Vous suivez votre colis à chaque étape — départ entrepôt, transit international, passage douanier, livraison finale. Pas besoin de relancer, pas besoin de chercher : vous êtes tenu informé en temps réel, de façon proactive.</p>
+
+      <div class="highlight">
+        <p>Toutes les livraisons sont <strong>assurées et traçables</strong>. En cas d'anomalie en transit — retard, colis bloqué en douane, dommage apparent — je prends en charge le signalement et le traitement auprès du transporteur <strong>sans que vous ayez à intervenir</strong>.</p>
+      </div>
+    </div>
+
+    <!-- 02 CONTRÔLE QUALITÉ -->
+    <div class="section">
+      <p class="section-label">02 — Contrôle qualité</p>
+      <h2 class="section-heading">Vérifié avant de partir. <em>Garanti à l'arrivée.</em></h2>
+
+      <p class="text">Avant que votre colis quitte le fournisseur, une vérification est effectuée pour s'assurer que ce que vous avez commandé est bien ce qui part. C'est ce qui différencie fondamentalement une commande via mon service d'un achat direct sur un site étranger où vous ne savez jamais vraiment ce qui va arriver.</p>
+
+      <ul class="quality-list">
+        <li>Conformité du produit avec la référence commandée</li>
+        <li>État général et absence de défaut visible</li>
+        <li>Emballage adapté au transport sur longue distance</li>
+        <li>Documentation requise pour le passage en douane</li>
+      </ul>
+
+      <p class="text" style="margin-top: 20px;">Si un point ne correspond pas à ce qui a été convenu, le colis est bloqué avant expédition et je reviens vers vous avec une solution — reprise fournisseur, remplacement ou annulation sans frais.</p>
+    </div>
+
+    <!-- 03 GARANTIE -->
+    <div class="section">
+      <p class="section-label">03 — Garantie</p>
+      <h2 class="section-heading">Des produits garantis. <em>Une tranquillité d'esprit incluse.</em></h2>
+
+      <p class="text">Chaque produit livré est couvert contre les vices cachés et les défauts de fabrication. La durée de garantie varie selon le fournisseur et la nature du produit — elle s'étend généralement de <strong style="color: var(--white); font-weight: 500;">6 mois à 1 an</strong>, et peut aller au-delà sur certaines références. Cette durée vous est précisée dans votre devis.</p>
+
+      <p class="text">En cas de pièce défectueuse ou de problème constaté à la réception, je gère directement auprès du fournisseur. Pas de SAV à contacter dans une langue étrangère, pas de formulaire introuvable, pas de délai de réponse incertain. Je m'en occupe, et je vous tiens informé.</p>
+
+      <div class="highlight">
+        <p>La <strong>garantie légale de conformité</strong> (articles L217-4 à L217-14 du Code de la consommation) et la <strong>garantie contre les vices cachés</strong> (articles 1641 à 1649 du Code civil) s'appliquent à toutes les transactions — indépendamment de la garantie commerciale accordée par le fournisseur.</p>
+      </div>
+    </div>
+
+    <!-- 04 RÉTRACTATION -->
+    <div class="section">
+      <p class="section-label">04 — Rétractation</p>
+      <h2 class="section-heading">Vous changez d'avis ? <em>Aucun problème.</em></h2>
+
+      <p class="text">Conformément à l'article L221-18 du Code de la consommation, vous disposez d'un délai de <strong style="color: var(--white); font-weight: 500;">15 jours calendaires</strong> à compter de la réception de votre commande pour exercer votre droit de rétractation — sans avoir à justifier votre décision, sans pénalité d'aucune sorte.</p>
+
+      <div class="retract-steps">
+        <div class="retract-step">
+          <span class="retract-step-n">1</span>
+          <p class="retract-step-text"><strong>Vous me contactez</strong> par message ou email pour signaler votre souhait de retour — dans les 15 jours suivant la réception.</p>
+        </div>
+        <div class="retract-step">
+          <span class="retract-step-n">2</span>
+          <p class="retract-step-text"><strong>Le produit est retourné</strong> en bon état, dans son emballage d'origine, dans les meilleurs délais suivant votre demande.</p>
+        </div>
+        <div class="retract-step">
+          <span class="retract-step-n">3</span>
+          <p class="retract-step-text"><strong>Le remboursement intégral</strong> est effectué dès réception et vérification du colis retourné. Sans délai superflu, sans tracas.</p>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <p><strong>Zéro frais cachés. Zéro pression. Zéro condition abusive.</strong> Votre achat est protégé par la loi — et par mon engagement personnel à traiter chaque situation avec équité et rapidité. Les frais de retour sont à la charge du client dans le cadre d'une rétractation simple ; ils sont pris en charge par mes soins en cas de défaut ou de non-conformité du produit.</p>
+      </div>
+    </div>
+
+    <!-- 05 ENGAGEMENT PERSONNEL -->
+    <div class="section">
+      <p class="section-label">05 — Engagement personnel</p>
+      <h2 class="section-heading">Un interlocuteur. <em>Pas un ticket.</em></h2>
+
+      <div class="engagement">
+        <div class="engagement-text">
+          <h3 class="engagement-name">Rachid <em>Ahmari</em></h3>
+          <p class="engagement-desc">Pas un call center. Pas un formulaire qui disparaît dans le vide. C'est moi — Rachid — qui réponds, qui suit, qui règle. Chaque client a un interlocuteur unique du premier message à la livraison. Si un problème survient, il est traité dans les <strong style="color: var(--gold);">24h</strong>. Vous n'avez jamais à répéter votre situation à quelqu'un de nouveau, jamais à attendre une réponse automatique. Juste un échange direct, efficace et humain.</p>
+        </div>
+        <div class="engagement-badge">
+          <div class="engagement-circle">
+            <span>24h</span>
+            <span>Réponse SAV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 FAQ -->
+    <div class="section">
+      <p class="section-label">06 — Questions fréquentes</p>
+      <h2 class="section-heading">Les réponses avant <em>les questions.</em></h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <p class="faq-q">Et si le produit reçu ne correspond pas à la description ?</p>
+          <p class="faq-a">C'est une non-conformité — et dans ce cas, <strong>les frais de retour sont entièrement à ma charge</strong>. Je prends en charge le retour, le traitement auprès du fournisseur et le remboursement intégral ou le remplacement selon votre préférence. Délai de traitement : 48h après réception du colis retourné.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Qui paie les frais de retour en cas de rétractation ?</p>
+          <p class="faq-a">Dans le cadre d'un exercice simple du droit de rétractation (produit conforme, sans défaut), les frais de retour sont à la charge du client, conformément à la loi. En revanche, tout retour lié à un défaut, une non-conformité ou une erreur de ma part est <strong>intégralement pris en charge</strong>.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Ma commande est bloquée en douane — que se passe-t-il ?</p>
+          <p class="faq-a">Je reçois l'alerte avant vous et j'interviens directement. La grande majorité des blocages douaniers se résout en 48 à 72h avec les bons documents. <strong>Vous n'avez rien à faire</strong> — je gère l'ensemble de la procédure et vous tiens informé à chaque étape.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Puis-je annuler ma commande après validation du devis ?</p>
+          <p class="faq-a">Tant que la commande n'a pas été passée auprès du fournisseur, l'annulation est possible <strong>sans frais</strong>. Une fois la commande confirmée côté fournisseur, les conditions d'annulation dépendent du fournisseur concerné — je vous en informerai clairement au moment de la validation.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Que se passe-t-il si le produit tombe en panne pendant la période de garantie ?</p>
+          <p class="faq-a">Vous me contactez, je prends en charge le dossier auprès du fournisseur. Selon le cas : réparation, remplacement de pièce ou échange du produit. <strong>Pas de SAV étranger à contacter de votre côté</strong> — c'est mon rôle de le faire à votre place.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section">
+      <div class="cta-block">
+        <p class="cta-label">Une question ?</p>
+        <h2 class="cta-heading">Je réponds à tout.<br><em>Personnellement.</em></h2>
+        <p class="cta-sub">Pas de FAQ interminable, pas d'attente. Un message suffit.</p>
+        <a href="index.html" class="btn-gold">Me contacter →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+</body>
+</html>

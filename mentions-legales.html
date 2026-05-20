@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales — Rachid·</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --gold-lt:     #E8D5B0;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-soft:   rgba(255,255,255,0.65);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --border-gold: rgba(201,169,110,0.25);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 64px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .logo span { color: var(--gold); }
+
+    .back-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before {
+      content: '←';
+      font-size: 12px;
+    }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 80px 64px 64px;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+
+    .page-date {
+      font-size: 12px;
+      color: var(--text-mute);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 64px 100px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .text {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .text:last-child { margin-bottom: 0; }
+
+    /* table d'info */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .info-table tr {
+      border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table td {
+      padding: 12px 0;
+      font-size: 13px;
+      line-height: 1.6;
+      vertical-align: top;
+    }
+    .info-table td:first-child {
+      color: rgba(255,255,255,0.45);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      width: 220px;
+      padding-right: 24px;
+    }
+    .info-table td:last-child {
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* liste droits */
+    .rights-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rights-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+    .rights-list li::before {
+      content: '·';
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    /* highlight box */
+    .highlight {
+      border: 0.5px solid var(--border-gold);
+      padding: 20px 24px;
+      margin-top: 24px;
+      background: rgba(201,169,110,0.04);
+    }
+    .highlight p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+    .highlight strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .highlight a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt);
+      border-top: 0.5px solid var(--border);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--text-mute);
+    }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .header { padding: 18px 20px; }
+
+      .page-hero {
+        padding: 48px 20px 40px;
+      }
+      .page-title { font-size: 36px; }
+
+      .content { padding: 48px 20px 72px; }
+
+      .info-table td:first-child {
+        width: 130px;
+        padding-right: 16px;
+      }
+
+      .page-footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo">Rachid<span>·</span></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Transparence &amp; conformité</p>
+    <h1 class="page-title">Mentions <em>légales.</em></h1>
+    <p class="page-date">Dernière mise à jour : mai 2026</p>
+  </div>
+
+  <!-- CONTENU -->
+  <main class="content">
+
+    <!-- 1. ÉDITEUR -->
+    <div class="section">
+      <p class="section-label">01</p>
+      <h2 class="section-heading">Éditeur du site</h2>
+      <table class="info-table">
+        <tr>
+          <td>Raison sociale</td>
+          <td>Rachid Ahmari</td>
+        </tr>
+        <tr>
+          <td>Forme juridique</td>
+          <td>Entreprise Individuelle</td>
+        </tr>
+        <tr>
+          <td>Siège social</td>
+          <td>172 Avenue Louis Bazerque, Toulouse, Occitanie</td>
+        </tr>
+        <tr>
+          <td>SIRET</td>
+          <td>890 579 873</td>
+        </tr>
+        <tr>
+          <td>TVA intracommunautaire</td>
+          <td>FR52890579873</td>
+        </tr>
+        <tr>
+          <td>Directeur de publication</td>
+          <td>Rachid Ahmari</td>
+        </tr>
+        <tr>
+          <td>Contact</td>
+          <td><a href="mailto:contact@rachid.fr" style="color:var(--gold)">contact@rachid.fr</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 2. HÉBERGEUR -->
+    <div class="section">
+      <p class="section-label">02</p>
+      <h2 class="section-heading">Hébergement du site</h2>
+      <table class="info-table">
+        <tr>
+          <td>Société</td>
+          <td>Hostinger International Ltd</td>
+        </tr>
+        <tr>
+          <td>Adresse</td>
+          <td>61 Lordou Vironos Street, 6023 Larnaca, Chypre</td>
+        </tr>
+        <tr>
+          <td>Site web</td>
+          <td><a href="https://www.hostinger.com" target="_blank" rel="noopener" style="color:var(--gold)">www.hostinger.com</a></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 3. PROPRIÉTÉ INTELLECTUELLE -->
+    <div class="section">
+      <p class="section-label">03</p>
+      <h2 class="section-heading">Propriété intellectuelle</h2>
+      <p class="text">L'ensemble des contenus présents sur ce site — textes, visuels, logo, structure — est la propriété exclusive de la société Rachid Ahmari, SASU, ou fait l'objet d'une autorisation d'utilisation.</p>
+      <p class="text">Toute reproduction, représentation, modification, publication ou transmission de tout ou partie de ces contenus, par quelque moyen que ce soit, est strictement interdite sans l'accord écrit préalable de l'éditeur.</p>
+      <p class="text">Toute exploitation non autorisée constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+    </div>
+
+    <!-- 4. DONNÉES PERSONNELLES -->
+    <div class="section">
+      <p class="section-label">04</p>
+      <h2 class="section-heading">Données personnelles &amp; RGPD</h2>
+
+      <p class="text">Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi Informatique et Libertés du 6 janvier 1978 modifiée, vous êtes informé des conditions de traitement de vos données personnelles.</p>
+
+      <table class="info-table" style="margin-top:24px; margin-bottom:24px;">
+        <tr>
+          <td>Responsable du traitement</td>
+          <td>Rachid Ahmari — contact@rachid.fr</td>
+        </tr>
+        <tr>
+          <td>Données collectées</td>
+          <td>Nom, prénom, adresse email, contenu du message saisi via le formulaire de contact</td>
+        </tr>
+        <tr>
+          <td>Finalité</td>
+          <td>Traitement et suivi des demandes de contact uniquement. Les données ne sont ni vendues, ni louées, ni transmises à des tiers.</td>
+        </tr>
+        <tr>
+          <td>Base légale</td>
+          <td>Consentement de la personne concernée (article 6.1.a du RGPD)</td>
+        </tr>
+        <tr>
+          <td>Durée de conservation</td>
+          <td>3 ans à compter du dernier contact, sauf demande de suppression anticipée</td>
+        </tr>
+        <tr>
+          <td>Transfert de données</td>
+          <td>Aucun transfert vers des pays tiers hors Union Européenne</td>
+        </tr>
+      </table>
+
+      <p class="text" style="color:rgba(255,255,255,0.65); font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Vos droits</p>
+
+      <ul class="rights-list">
+        <li><strong style="color:var(--white); font-weight:500">Droit d'accès</strong> — obtenir une copie des données vous concernant</li>
+        <li><strong style="color:var(--white); font-weight:500">Droit de rectification</strong> — corriger des données inexactes ou incomplètes</li>
+        <li><strong style="color:var(--white); font-weight:500">Droit à l'effacement</strong> — demander la suppression de vos données</li>
+        <li><strong style="color:var(--white); font-weight:500">Droit à la portabilité</strong> — recevoir vos données dans un format structuré</li>
+        <li><strong style="color:var(--white); font-weight:500">Droit d'opposition</strong> — vous opposer à un traitement vous concernant</li>
+        <li><strong style="color:var(--white); font-weight:500">Droit de limitation</strong> — limiter temporairement l'utilisation de vos données</li>
+      </ul>
+
+      <div class="highlight">
+        <p>Pour exercer l'un de ces droits, adressez votre demande par email à <strong>contact@rachid.fr</strong>. Une réponse vous sera apportée dans un délai maximum de <strong>30 jours</strong>.</p>
+        <p style="margin-top:12px;">Vous disposez également du droit d'introduire une réclamation auprès de la <strong><a href="https://www.cnil.fr" target="_blank" rel="noopener">Commission Nationale de l'Informatique et des Libertés (CNIL)</a></strong> — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07.</p>
+      </div>
+    </div>
+
+    <!-- 5. COOKIES -->
+    <div class="section">
+      <p class="section-label">05</p>
+      <h2 class="section-heading">Politique de cookies</h2>
+      <p class="text">Ce site n'utilise que des cookies techniques strictement nécessaires à son bon fonctionnement. Aucun cookie publicitaire, analytique ou de suivi tiers n'est déposé sur votre terminal.</p>
+      <p class="text">Ces cookies techniques ne permettent pas d'identifier personnellement les visiteurs et ne nécessitent pas de consentement préalable conformément aux recommandations de la CNIL.</p>
+      <p class="text">Vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies. Cela peut toutefois affecter certaines fonctionnalités du site.</p>
+    </div>
+
+    <!-- 6. LIENS EXTERNES -->
+    <div class="section">
+      <p class="section-label">06</p>
+      <h2 class="section-heading">Liens hypertextes</h2>
+      <p class="text">Ce site peut contenir des liens vers des sites web tiers. Ces liens sont fournis à titre informatif uniquement. La société Rachid Ahmari n'exerce aucun contrôle sur le contenu de ces sites et décline toute responsabilité quant à leurs pratiques en matière de confidentialité ou à leur contenu.</p>
+    </div>
+
+    <!-- 7. RESPONSABILITÉ -->
+    <div class="section">
+      <p class="section-label">07</p>
+      <h2 class="section-heading">Limitation de responsabilité</h2>
+      <p class="text">Les informations contenues sur ce site sont fournies à titre indicatif. La société s'efforce de maintenir le site accessible et à jour, mais ne saurait garantir l'absence d'interruptions ou d'erreurs.</p>
+      <p class="text">La société décline toute responsabilité pour tout dommage direct ou indirect résultant de l'utilisation du site ou de l'impossibilité d'y accéder.</p>
+    </div>
+
+    <!-- 8. DROIT APPLICABLE -->
+    <div class="section">
+      <p class="section-label">08</p>
+      <h2 class="section-heading">Droit applicable &amp; juridiction</h2>
+      <p class="text">Les présentes mentions légales sont régies par le droit français. En cas de litige relatif à l'interprétation ou à l'exécution des présentes, et à défaut d'accord amiable, les tribunaux français seront seuls compétents.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+</body>
+</html>
