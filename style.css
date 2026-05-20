@@ -277,6 +277,19 @@ img { display: block; max-width: 100%; }
 
 .hero-icon { font-size: 52px; color: rgba(201,169,110,0.35); }
 
+.hero-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(ellipse 65% 55% at 50% 28%, rgba(201,169,110,0.28) 0%, rgba(201,169,110,0.08) 45%, transparent 72%);
+  animation: hero-glow-pulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hero-glow-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 1;    }
+}
+
 .rachid-photo {
   position: absolute;
   inset: 0;
