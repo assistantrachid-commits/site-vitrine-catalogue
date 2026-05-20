@@ -720,13 +720,14 @@ img { display: block; max-width: 100%; }
   align-items: center;
   text-align: center;
 }
+.cta-sub { display: none; }
 .cta-title {
   font-family: var(--serif);
   font-size: 64px;
   font-weight: 300;
   color: var(--white);
   line-height: 1.1;
-  margin-bottom: 28px;
+  margin-bottom: 40px;
 }
 .cta-title em { font-style: italic; color: var(--gold); }
 .cta-sub {
@@ -744,7 +745,7 @@ img { display: block; max-width: 100%; }
 
 /* ─── FOOTER ─── */
 .footer {
-  background: var(--bg-alt);
+  background: var(--bg);
   border-top: 0.5px solid var(--border);
 }
 .footer-inner {
