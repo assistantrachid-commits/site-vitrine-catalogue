@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie — Rachid·</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0a0a0a;
+      --bg-alt:      #080808;
+      --gold:        #C9A96E;
+      --white:       #FFFFFF;
+      --text:        rgba(255,255,255,0.82);
+      --text-mute:   rgba(255,255,255,0.45);
+      --border:      rgba(255,255,255,0.06);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 64px;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .logo-img-header { height: 54px; width: auto; display: block; }
+    .back-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '←'; font-size: 12px; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 64px 64px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-family: var(--serif);
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.05;
+    }
+    .page-title em { font-style: italic; color: var(--gold); }
+
+    /* ── GRILLE ── */
+    .gallery-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      cursor: pointer;
+      line-height: 0;
+    }
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.03); }
+
+    /* ── LIGHTBOX ── */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.96);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-overlay.active { display: flex; }
+    .lb-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 10;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .lb-close:hover { color: var(--gold); }
+    .lb-container {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: pinch-zoom;
+    }
+    .lb-img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      user-select: none;
+      touch-action: pinch-zoom;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      background: var(--bg-alt, #080808);
+      border-top: 0.5px solid var(--border);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: 11px; color: var(--text-mute); }
+    .footer-copy span { color: var(--gold); }
+    .footer-back {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      transition: color 0.3s;
+    }
+    .footer-back:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+    }
+    @media (max-width: 768px) {
+      .header { padding: 10px 20px; }
+      .logo-img-header { height: 44px; }
+      .page-hero { padding: 40px 20px 32px; }
+      .page-title { font-size: 36px; }
+      .gallery-wrap { padding: 0 12px 60px; }
+      .page-footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html"><img src="logo%202.png" alt="Rachid" class="logo-img-header"></a>
+    <a href="index.html" class="back-link">Retour au site</a>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="eyebrow">Catalogue · Réalisations</p>
+    <h1 class="page-title">Ce que je trouve <em>pour vous.</em></h1>
+  </div>
+
+  <!-- GRILLE -->
+  <div class="gallery-wrap">
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="14%20photos/1.png"  alt="Réalisation 1"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/2.png"  alt="Réalisation 2"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/3.png"  alt="Réalisation 3"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/4.png"  alt="Réalisation 4"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/5.png"  alt="Réalisation 5"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/6.png"  alt="Réalisation 6"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/7.png"  alt="Réalisation 7"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/8.png"  alt="Réalisation 8"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/9.png"  alt="Réalisation 9"  loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/10.png" alt="Réalisation 10" loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/11.png" alt="Réalisation 11" loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/12.png" alt="Réalisation 12" loading="lazy"></div>
+      <div class="gallery-item"><img src="14%20photos/14.png" alt="Réalisation 14" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lb-overlay" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lbClose" aria-label="Fermer">✕</button>
+    <div class="lb-container" id="lbContainer">
+      <img id="lbImg" class="lb-img" src="" alt="">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span class="footer-copy">© 2026 <span>Rachid</span> · Tous droits réservés</span>
+    <a href="index.html" class="footer-back">← Retour au site</a>
+  </footer>
+
+  <script>
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const lbCont  = document.getElementById('lbContainer');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        lbImg.src = item.querySelector('img').src;
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLb() {
+      lb.classList.remove('active');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', e => { if (e.target === lb || e.target === lbCont) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+  </script>
+
+</body>
+</html>

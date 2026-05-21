@@ -556,6 +556,45 @@ img { display: block; max-width: 100%; }
 }
 .cat-card:hover .cat-bar { width: 100%; }
 
+/* ─── CATALOGUE SHOWCASE ─── */
+.cat-showcase {
+  display: block;
+  position: relative;
+  margin-top: 40px;
+  overflow: hidden;
+  text-decoration: none;
+  line-height: 0;
+}
+.cat-showcase-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.cat-showcase:hover .cat-showcase-img { transform: scale(1.02); }
+.cat-voir-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(10,10,10,0.6);
+  border: 0.5px solid rgba(201,169,110,0.55);
+  color: #C9A96E;
+  padding: 14px 36px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 0.3s, border-color 0.3s;
+  pointer-events: none;
+}
+.cat-showcase:hover .cat-voir-plus {
+  background: rgba(10,10,10,0.8);
+  border-color: rgba(201,169,110,0.9);
+}
+
 /* ─── RÉALISATIONS ─── */
 .realisations {
   background: var(--bg);
