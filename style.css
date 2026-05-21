@@ -241,11 +241,11 @@ img { display: block; max-width: 100%; }
 
 .hero-title {
   font-family: var(--serif);
-  font-size: 80px;
+  font-size: 52px;
   font-weight: 300;
-  line-height: 1.0;
+  line-height: 1.1;
   color: var(--white);
-  margin: 20px 0 28px;
+  margin: 20px 0 48px;
   max-width: 100%;
 }
 .hero-title em { font-style: italic; color: var(--gold); }
@@ -1025,7 +1025,7 @@ img { display: block; max-width: 100%; }
   }
   .hero-visual { order: -1; }
   .hero-photo { width: 260px; height: 320px; }
-  .hero-title { font-size: 56px; }
+  .hero-title { font-size: 40px; }
   .hero-content { padding-top: 12px; }
   .hero-sub { font-size: 15px; }
 
