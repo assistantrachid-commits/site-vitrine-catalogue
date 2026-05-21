@@ -332,7 +332,7 @@ img { display: block; max-width: 100%; }
 .ticker-track {
   display: flex;
   white-space: nowrap;
-  animation: ticker-scroll 20s linear infinite;
+  animation: ticker-scroll 6s linear infinite;
 }
 .ticker-content {
   font-size: 10px;
