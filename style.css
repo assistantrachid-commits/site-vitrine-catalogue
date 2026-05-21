@@ -366,16 +366,12 @@ img { display: block; max-width: 100%; }
   margin-bottom: 52px;
 }
 
-/* Sans h2 dans réalisations, annule le margin négatif */
-.realisations .section-inner > .eyebrow + .section-intro {
-  margin-top: 16px;
-}
-
 /* Centrage header pour catalogue, réalisations, avis */
 .catalogue .section-inner > .eyebrow,
 .catalogue .section-inner > .section-title,
 .catalogue .section-inner > .section-intro,
 .realisations .section-inner > .eyebrow,
+.realisations .section-inner > .section-title,
 .realisations .section-inner > .section-intro,
 .realisations .section-inner > .section-intro--sub,
 .avis .section-inner > .eyebrow,
