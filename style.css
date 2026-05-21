@@ -332,7 +332,7 @@ img { display: block; max-width: 100%; }
 .ticker-track {
   display: flex;
   white-space: nowrap;
-  animation: ticker-scroll 10s linear infinite;
+  animation: ticker-scroll 20s linear infinite;
 }
 .ticker-content {
   font-size: 10px;
@@ -345,7 +345,7 @@ img { display: block; max-width: 100%; }
 }
 @keyframes ticker-scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-25%); }
 }
 
 /* ─── SECTION INTRO (sous-titre de section) ─── */
