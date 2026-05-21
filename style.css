@@ -777,10 +777,12 @@ img { display: block; max-width: 100%; }
 
 
 .footer-tagline {
-  font-size: 13px;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 300;
   font-style: italic;
-  color: rgba(255,255,255,0.62);
-  line-height: 1.9;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
   max-width: 400px;
   margin-bottom: 32px;
 }
