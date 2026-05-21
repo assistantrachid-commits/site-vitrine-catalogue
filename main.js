@@ -101,7 +101,7 @@ function countUp(el, target, suffix, duration) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
     const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(ease * target) + suffix;
+    el.textContent = (el.dataset.prefix || '') + Math.round(ease * target) + suffix;
     if (progress < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
