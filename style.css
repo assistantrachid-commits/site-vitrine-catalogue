@@ -567,9 +567,14 @@ img { display: block; max-width: 100%; }
 }
 .cat-showcase-img {
   width: 100%;
-  height: auto;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform 0.6s ease;
+}
+@media (max-width: 768px) {
+  .cat-showcase-img { height: 340px; }
 }
 .cat-showcase:hover .cat-showcase-img { transform: scale(1.02); }
 @keyframes pulse-gold {
