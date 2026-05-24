@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -93,11 +93,22 @@
 
   <!-- SERVICE -->
   <section class="service" id="service">
-    <div class="section-inner reveal">
-      <p class="eyebrow">Le service</p>
-      <h2 class="section-title">Un service de <em>recherche produit.</em></h2>
-      <p class="service-intro">Je trouve directement à la source ce que vous cherchez — au bon prix, dans les meilleurs délais.</p>
-      <div class="service-grid">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="eyebrow">Le service</p>
+        <h2 class="section-title">Un service de <em>recherche produit.</em></h2>
+        <p class="service-intro">Je trouve directement à la source ce que vous cherchez — au bon prix, dans les meilleurs délais.</p>
+      </div>
+      <div class="service-progress-bar">
+        <div class="spb-line"><div class="spb-fill" id="spbFill"></div></div>
+        <div class="spb-dots">
+          <span class="spb-dot"></span>
+          <span class="spb-dot"></span>
+          <span class="spb-dot"></span>
+          <span class="spb-dot"></span>
+        </div>
+      </div>
+      <div class="service-grid" id="serviceGrid">
         <div class="service-step">
           <div class="step-header"><span class="step-num">01</span><h3 class="step-title">Vous décrivez</h3></div>
           <p class="step-body">Le produit, la quantité, le budget, le délai. Aussi précis que vous le souhaitez.</p>
@@ -115,7 +126,7 @@
           <p class="step-body">Si la proposition vous convient, règlement sécurisé en ligne. Sinon, pas un centime.</p>
         </div>
       </div>
-      <div class="service-cta">
+      <div class="service-cta reveal">
         <a href="demande.html" class="btn btn-gold">
           <span class="btn-text">Envoyer ma demande</span>
         </a>
@@ -630,6 +641,6 @@
     </div>
   </div>
 
-  <script src="main.js?v=2"></script>
+  <script src="main.js?v=3"></script>
 </body>
 </html>

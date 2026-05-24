@@ -477,7 +477,7 @@ img { display: block; max-width: 100%; }
   color: rgba(255,255,255,0.7);
   max-width: 540px;
   line-height: 1.85;
-  margin-bottom: 72px;
+  margin-bottom: 40px;
 }
 .service-cta {
   display: flex;
@@ -485,6 +485,53 @@ img { display: block; max-width: 100%; }
   margin-top: 48px;
   margin-bottom: 8px;
 }
+
+/* ── Barre de progression ── */
+.service-progress-bar {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  padding: 16px 0 20px;
+}
+.spb-line {
+  position: absolute;
+  top: 50%;
+  left: calc(100% / 8);
+  right: calc(100% / 8);
+  height: 1px;
+  background: rgba(201,169,110,0.15);
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+.spb-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0.55));
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.spb-dots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  position: relative;
+}
+.spb-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,169,110,0.3);
+  background: #0a0a0a;
+  transition: background 0.4s, border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+}
+.spb-dot.dot-active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(201,169,110,0.55);
+}
+@media (max-width: 768px) { .service-progress-bar { display: none; } }
+
+/* ── Grille + cascade ── */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -492,11 +539,38 @@ img { display: block; max-width: 100%; }
   max-width: 1080px;
   text-align: left;
 }
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .service-step {
   padding: 40px 32px;
   border-right: 0.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  opacity: 0;
+}
+.service-step.step-in {
+  animation: stepIn 0.55s ease forwards;
 }
 .service-step:last-child { border-right: none; }
+.service-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.service-step:hover::before { transform: scaleX(1); }
+.service-step.step-in:hover {
+  background: rgba(201,169,110,0.04);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+  transform: translateY(-5px);
+}
 .step-num {
   font-family: var(--serif);
   font-size: 21px;

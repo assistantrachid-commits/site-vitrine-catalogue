@@ -313,6 +313,36 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
   });
 })();
 
+/* ─── SERVICE STEPS : cascade + progression ─── */
+(function () {
+  const grid = document.getElementById('serviceGrid');
+  if (!grid) return;
+
+  const steps = Array.from(grid.querySelectorAll('.service-step'));
+  const fill  = document.getElementById('spbFill');
+  const dots  = Array.from(document.querySelectorAll('.spb-dot'));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      steps.forEach((step, i) => {
+        setTimeout(() => {
+          step.style.animationDelay = '0ms';
+          step.classList.add('step-in');
+          if (dots[i]) dots[i].classList.add('dot-active');
+        }, i * 160);
+      });
+
+      setTimeout(() => { if (fill) fill.style.width = '100%'; }, 180);
+
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.25 });
+
+  observer.observe(grid);
+})();
+
 /* ─── TYPEWRITER ─── */
 (function () {
   const nameEl = document.getElementById('hero-name');
