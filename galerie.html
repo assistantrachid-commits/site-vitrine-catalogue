@@ -108,31 +108,43 @@
     }
     .gallery-item:hover img { transform: scale(1.03); }
     .gallery-text-card {
-      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .gallery-text-card::after {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+    .gtc-inner {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px;
+      padding: 24px;
       background: rgba(201,169,110,0.05);
       border: 0.5px solid rgba(201,169,110,0.25);
-      text-decoration: none;
       transition: background 0.3s, border-color 0.3s;
     }
-    .gallery-text-card:hover {
+    .gallery-text-card:hover .gtc-inner {
       background: rgba(201,169,110,0.1);
       border-color: rgba(201,169,110,0.55);
     }
-    .gallery-text-card p {
+    .gtc-inner p {
       font-family: 'DM Serif Display', serif;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 300;
       font-style: italic;
       color: #C9A96E;
-      line-height: 1.7;
+      line-height: 1.75;
       text-align: center;
     }
     @media (min-width: 768px) {
-      .gallery-text-card p { font-size: 17px; }
+      .gtc-inner p { font-size: 17px; }
     }
 
     /* ── LIGHTBOX ── */
@@ -301,7 +313,9 @@
       <div class="gallery-item"><img src="photos/66.png" alt="Réalisation 66" loading="lazy"></div>
       <div class="gallery-item"><img src="photos/67.png" alt="Réalisation 67" loading="lazy"></div>
       <a href="demande.html" class="gallery-text-card">
-        <p>Pas de catalogue infini. Chaque produit ici a survécu à mon regard critique. Bonne chance aux autres.</p>
+        <div class="gtc-inner">
+          <p>Pas de catalogue infini. Chaque produit ici a survécu à mon regard critique. Bonne chance aux autres.</p>
+        </div>
       </a>
     </div>
   </div>
