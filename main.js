@@ -313,6 +313,37 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
   });
 })();
 
+/* ─── TYPEWRITER ─── */
+(function () {
+  const nameEl = document.getElementById('hero-name');
+  const roleEl = document.getElementById('hero-role');
+  if (!nameEl || !roleEl) return;
+
+  const cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+
+  function typeText(el, text, speed, onDone) {
+    let i = 0;
+    el.textContent = '';
+    el.appendChild(cursor);
+    const interval = setInterval(() => {
+      el.insertBefore(document.createTextNode(text[i]), cursor);
+      i++;
+      if (i >= text.length) {
+        clearInterval(interval);
+        if (onDone) setTimeout(onDone, 350);
+      }
+    }, speed);
+  }
+
+  setTimeout(() => {
+    typeText(nameEl, 'Rachid', 90, () => {
+      nameEl.removeChild(cursor);
+      typeText(roleEl, 'Expert Acquisition Produit', 55, null);
+    });
+  }, 400);
+})();
+
 /* ─── CONTACT FORM ─── */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {

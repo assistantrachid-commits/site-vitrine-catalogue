@@ -312,6 +312,7 @@ img { display: block; max-width: 100%; }
   font-weight: 300;
   color: var(--white);
   margin-top: 14px;
+  min-height: 1.2em;
 }
 .hero-role {
   font-size: 11px;
@@ -320,6 +321,20 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
   color: var(--gold);
   margin-top: 6px;
+  min-height: 1.4em;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.typewriter-cursor {
+  display: inline-block;
+  width: 1px;
+  background: currentColor;
+  margin-left: 2px;
+  animation: blink 0.7s step-end infinite;
+  vertical-align: text-bottom;
+  height: 0.9em;
 }
 
 /* ─── TICKER ─── */
