@@ -589,6 +589,14 @@ img { display: block; max-width: 100%; }
 .step-header {
   margin-bottom: 14px;
 }
+@keyframes pulse-step-title {
+  0%, 12%, 100% { filter: brightness(1); text-shadow: none; }
+  6% { filter: brightness(1.6); text-shadow: 0 0 14px rgba(201,169,110,0.75); }
+}
+.service-step:nth-child(1) .step-header { animation: pulse-step-title 8s ease-in-out infinite; animation-delay: 0s; }
+.service-step:nth-child(2) .step-header { animation: pulse-step-title 8s ease-in-out infinite; animation-delay: 2s; }
+.service-step:nth-child(3) .step-header { animation: pulse-step-title 8s ease-in-out infinite; animation-delay: 4s; }
+.service-step:nth-child(4) .step-header { animation: pulse-step-title 8s ease-in-out infinite; animation-delay: 6s; }
 .step-body {
   font-size: 16px;
   font-weight: 300;
