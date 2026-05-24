@@ -326,15 +326,23 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
 
+      // 1. cartes en cascade
       steps.forEach((step, i) => {
         setTimeout(() => {
           step.style.animationDelay = '0ms';
           step.classList.add('step-in');
-          if (dots[i]) dots[i].classList.add('dot-active');
         }, i * 160);
       });
 
-      setTimeout(() => { if (fill) fill.style.width = '100%'; }, 180);
+      // 2. points s'allument un par un après les cartes
+      const dotsDelay = 700;
+      const dotSpacing = 220;
+      dots.forEach((dot, i) => {
+        setTimeout(() => dot.classList.add('dot-active'), dotsDelay + i * dotSpacing);
+      });
+
+      // 3. ligne se remplit en même temps que les points
+      setTimeout(() => { if (fill) fill.style.width = '100%'; }, dotsDelay);
 
       observer.unobserve(entry.target);
     });
