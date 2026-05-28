@@ -232,8 +232,18 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
     timer = setInterval(() => goTo(current + 1), 5000);
   }
 
-  startTimer();
-  track.addEventListener('mouseenter', () => clearInterval(timer));
+  function stopTimer() { clearInterval(timer); }
+
+  const visibilityObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) startTimer();
+      else stopTimer();
+    });
+  }, { threshold: 0.3 });
+
+  visibilityObserver.observe(track.closest('section') || track);
+
+  track.addEventListener('mouseenter', stopTimer);
   track.addEventListener('mouseleave', startTimer);
 })();
 
