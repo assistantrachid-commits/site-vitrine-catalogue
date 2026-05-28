@@ -458,6 +458,9 @@ img { display: block; max-width: 100%; }
   line-height: 1;
   margin-bottom: 12px;
   white-space: nowrap;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
 }
 .stat-label {
   font-size: 13px;
