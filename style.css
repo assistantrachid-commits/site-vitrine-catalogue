@@ -428,6 +428,10 @@ img { display: block; max-width: 100%; }
   transition: transform 0.4s ease;
 }
 .real-card:hover .real-photo { transform: scale(1.03); }
+.real-photo--contain {
+  object-fit: contain;
+  object-position: center;
+}
 
 /* ─── STATS ─── */
 .stats {
