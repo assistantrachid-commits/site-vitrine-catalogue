@@ -138,7 +138,6 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
   let startX     = 0;
   let isDragging = false;
   let dragDelta  = 0;
-  let timer      = null;
   let resizeTimer = null;
 
   function getPerView() { return window.innerWidth >= 900 ? 2 : 1; }
@@ -196,7 +195,7 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
 
   track.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX; isDragging = true; dragDelta = 0;
-    grid.classList.add('dragging'); clearInterval(timer);
+    grid.classList.add('dragging');
   }, { passive: true });
 
   track.addEventListener('touchmove', e => {
@@ -208,13 +207,12 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
     isDragging = false; grid.classList.remove('dragging');
     if (dragDelta < -50) goTo(current + 1);
     else if (dragDelta > 50) goTo(current - 1);
-    startTimer();
   });
 
   track.addEventListener('mousedown', e => {
     e.preventDefault();
     startX = e.clientX; isDragging = true; dragDelta = 0;
-    grid.classList.add('dragging'); clearInterval(timer);
+    grid.classList.add('dragging');
   });
 
   window.addEventListener('mousemove', e => { if (isDragging) dragDelta = e.clientX - startX; });
@@ -224,27 +222,8 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
     isDragging = false; grid.classList.remove('dragging');
     if (dragDelta < -50) goTo(current + 1);
     else if (dragDelta > 50) goTo(current - 1);
-    startTimer();
   });
 
-  function startTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 5000);
-  }
-
-  function stopTimer() { clearInterval(timer); }
-
-  const visibilityObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) startTimer();
-      else stopTimer();
-    });
-  }, { threshold: 0.3 });
-
-  visibilityObserver.observe(track.closest('section') || track);
-
-  track.addEventListener('mouseenter', stopTimer);
-  track.addEventListener('mouseleave', startTimer);
 })();
 
 /* ─── AVIS CAROUSEL ─── */
