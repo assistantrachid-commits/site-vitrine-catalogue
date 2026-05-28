@@ -480,6 +480,9 @@ img { display: block; max-width: 100%; }
   max-width: 540px;
   line-height: 1.85;
   margin-bottom: 40px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .service-cta {
   display: flex;
