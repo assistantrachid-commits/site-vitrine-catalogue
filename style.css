@@ -565,18 +565,9 @@ img { display: block; max-width: 100%; }
   opacity: 0;
   transition: background 0.35s ease, box-shadow 0.35s ease;
 }
-.service-step.step-in:nth-child(1) {
-  animation: stepFromLeft   0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.service-step.step-in:nth-child(2) {
-  animation: stepFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.service-step.step-in:nth-child(3) {
-  animation: stepFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.service-step.step-in:nth-child(4) {
-  animation: stepFromRight  0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
+.service-step.step-from-left   { animation: stepFromLeft   0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.service-step.step-from-bottom { animation: stepFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.service-step.step-from-right  { animation: stepFromRight  0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 .service-step:last-child { border-right: none; }
 .service-step::before {
   content: '';
@@ -588,15 +579,21 @@ img { display: block; max-width: 100%; }
   transform-origin: left;
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.service-step.step-in::before {
+.service-step.step-from-left::before,
+.service-step.step-from-bottom::before,
+.service-step.step-from-right::before {
   transform: scaleX(1);
   transition-delay: 0.35s;
 }
-.service-step.step-in:hover {
+.service-step.step-from-left:hover,
+.service-step.step-from-bottom:hover,
+.service-step.step-from-right:hover {
   background: rgba(201, 169, 110, 0.05);
   box-shadow: inset 0 0 0 0.5px rgba(201, 169, 110, 0.22);
 }
-.service-step.step-in:hover .step-body {
+.service-step.step-from-left:hover .step-body,
+.service-step.step-from-bottom:hover .step-body,
+.service-step.step-from-right:hover .step-body {
   color: rgba(255, 255, 255, 0.88);
   transition: color 0.35s ease;
 }
@@ -1236,10 +1233,9 @@ img { display: block; max-width: 100%; }
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .service-step.step-in:nth-child(1),
-  .service-step.step-in:nth-child(2),
-  .service-step.step-in:nth-child(3),
-  .service-step.step-in:nth-child(4) {
+  .service-step.step-from-left,
+  .service-step.step-from-bottom,
+  .service-step.step-from-right {
     animation: stepInMobile 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
   .service-step::before { display: none; }

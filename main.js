@@ -327,9 +327,10 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
       if (!entry.isIntersecting) return;
 
       // 1. cartes en cascade
+      const directions = ['step-from-left', 'step-from-bottom', 'step-from-bottom', 'step-from-right'];
       steps.forEach((step, i) => {
         setTimeout(() => {
-          step.classList.add('step-in');
+          step.classList.add(directions[i] || 'step-from-bottom');
         }, i * 190);
       });
 
