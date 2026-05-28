@@ -574,22 +574,6 @@ img { display: block; max-width: 100%; }
 .service-step.step-from-bottom { animation: stepFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 .service-step.step-from-right  { animation: stepFromRight  0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 .service-step:last-child { border-right: none; }
-.service-step::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.service-step.step-from-left::before,
-.service-step.step-from-bottom::before,
-.service-step.step-from-right::before {
-  transform: scaleX(1);
-  transition-delay: 0.35s;
-}
 .service-step.step-from-left:hover,
 .service-step.step-from-bottom:hover,
 .service-step.step-from-right:hover {
