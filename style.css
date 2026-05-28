@@ -506,37 +506,40 @@ img { display: block; max-width: 100%; }
   top: 50%;
   left: calc(100% / 8);
   right: calc(100% / 8);
-  height: 1px;
-  background: rgba(201,169,110,0.15);
+  height: 0.5px;
+  background: rgba(201,169,110,0.35);
   transform: translateY(-50%);
-  overflow: hidden;
 }
-.spb-fill {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0.55));
-  transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-}
+.spb-fill { display: none; }
 .spb-dots {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   position: relative;
 }
+@keyframes pulse-dot {
+  0%, 10%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(201,169,110,0);
+    background: var(--gold);
+  }
+  5% {
+    transform: scale(2);
+    box-shadow: 0 0 18px 6px rgba(201,169,110,0.7), 0 0 6px rgba(201,169,110,0.9);
+    background: #f0d080;
+  }
+}
 .spb-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  border: 1.5px solid rgba(201,169,110,0.3);
-  background: #0a0a0a;
-  transition: background 0.4s, border-color 0.4s, transform 0.4s, box-shadow 0.4s;
-}
-.spb-dot.dot-active {
   background: var(--gold);
-  border-color: var(--gold);
-  transform: scale(1.5);
-  box-shadow: 0 0 10px rgba(201,169,110,0.55);
+  animation: pulse-dot 8s ease-in-out infinite;
 }
+.spb-dot:nth-child(1) { animation-delay: 0s; }
+.spb-dot:nth-child(2) { animation-delay: 2s; }
+.spb-dot:nth-child(3) { animation-delay: 4s; }
+.spb-dot:nth-child(4) { animation-delay: 6s; }
 @media (max-width: 768px) { .service-progress-bar { display: none; } }
 
 /* ── Grille + cascade ── */

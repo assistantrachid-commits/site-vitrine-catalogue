@@ -323,16 +323,6 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
         }, i * 190);
       });
 
-      // 2. points s'allument un par un après les cartes
-      const dotsDelay = 700;
-      const dotSpacing = 220;
-      dots.forEach((dot, i) => {
-        setTimeout(() => dot.classList.add('dot-active'), dotsDelay + i * dotSpacing);
-      });
-
-      // 3. ligne se remplit en même temps que les points
-      setTimeout(() => { if (fill) fill.style.width = '100%'; }, dotsDelay);
-
       observer.unobserve(entry.target);
     });
   }, { threshold: 0.25 });
