@@ -329,9 +329,8 @@ document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el
       // 1. cartes en cascade
       steps.forEach((step, i) => {
         setTimeout(() => {
-          step.style.animationDelay = '0ms';
           step.classList.add('step-in');
-        }, i * 160);
+        }, i * 190);
       });
 
       // 2. points s'allument un par un après les cartes
