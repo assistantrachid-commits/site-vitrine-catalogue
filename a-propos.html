@@ -78,9 +78,10 @@
       display: block;
       width: 100%;
       height: auto;
-      max-height: 460px;
-      object-fit: contain;
-      object-position: bottom center;
+      max-height: 400px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 2px;
     }
 
     .hero-photo-label {
@@ -330,7 +331,7 @@
         padding: 40px 20px 32px;
         border-top: none;
       }
-      .hero-photo-side img { max-height: 360px; width: auto; max-width: 100%; }
+      .hero-photo-side img { max-height: 320px; width: 100%; object-fit: cover; object-position: center top; }
       .hero-photo-label { margin-top: 16px; }
 
       .values-strip { grid-template-columns: 1fr; }
@@ -351,7 +352,7 @@
   <!-- HERO SPLIT -->
   <div class="hero-split">
     <div class="hero-photo-side">
-      <img src="images/rachid-nobg.png" alt="Rachid Iméchoui">
+      <img src="images/blazer%20bleu.png" alt="Rachid Iméchoui">
       <div class="hero-photo-label">
         <p class="hero-photo-name">Rachid Iméchoui</p>
         <p class="hero-photo-role">Expert acquisition produit</p>
