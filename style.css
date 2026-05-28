@@ -496,12 +496,18 @@ img { display: block; max-width: 100%; }
 
 /* ── Barre de progression ── */
 .service-progress-bar {
-  position: relative;
   width: 100%;
   max-width: 1080px;
   padding: 16px 0 20px;
 }
-.spb-line {
+.spb-dots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  position: relative;
+}
+.spb-dots::before {
+  content: '';
   position: absolute;
   top: 50%;
   left: calc(100% / 8);
@@ -509,13 +515,6 @@ img { display: block; max-width: 100%; }
   height: 0.5px;
   background: rgba(201,169,110,0.35);
   transform: translateY(-50%);
-}
-.spb-fill { display: none; }
-.spb-dots {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  position: relative;
 }
 @keyframes pulse-dot {
   0%, 10%, 100% {
