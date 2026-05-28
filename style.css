@@ -425,9 +425,7 @@ img { display: block; max-width: 100%; }
   object-fit: cover;
   object-position: center;
   z-index: 1;
-  transition: transform 0.4s ease;
 }
-.real-card:hover .real-photo { transform: scale(1.03); }
 .real-photo--contain {
   object-fit: contain;
   object-position: center;
@@ -1259,7 +1257,7 @@ img { display: block; max-width: 100%; }
 
   .carousel-arrow { display: none; }
   .carousel-dots { margin-top: 12px; }
-  .real-img { height: 220px; }
+  .real-img { height: 280px; }
   .real-name { font-size: 22px; }
   .real-info { padding: 24px 20px; }
   .avis-grid { cursor: grab; }
