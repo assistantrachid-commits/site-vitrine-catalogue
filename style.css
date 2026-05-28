@@ -427,8 +427,8 @@ img { display: block; max-width: 100%; }
   z-index: 1;
 }
 .real-photo--contain {
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* ─── STATS ─── */
