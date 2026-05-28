@@ -452,11 +452,12 @@ img { display: block; max-width: 100%; }
 .stat-item:last-child { border-right: none; }
 .stat-num {
   font-family: var(--serif);
-  font-size: 48px;
+  font-size: clamp(28px, 3.2vw, 48px);
   font-weight: 300;
   color: var(--gold);
   line-height: 1;
   margin-bottom: 12px;
+  white-space: nowrap;
 }
 .stat-label {
   font-size: 13px;
