@@ -543,6 +543,7 @@ img { display: block; max-width: 100%; }
   width: 100%;
   max-width: 1080px;
   text-align: left;
+  overflow: hidden;
 }
 @keyframes stepFromLeft {
   from { opacity: 0; transform: translateX(-40px); }
