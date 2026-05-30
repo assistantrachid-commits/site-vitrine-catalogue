@@ -1024,6 +1024,13 @@ img { display: block; max-width: 100%; }
   border-top: 0.5px solid rgba(255,255,255,0.04);
 }
 .footer-copy { font-size: 11px; color: rgba(255,255,255,0.45); }
+.footer-linkedin {
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.25s ease;
+}
+.footer-linkedin:hover { color: var(--gold); }
 .footer-legal-links { display: flex; align-items: center; gap: 12px; }
 .footer-legal-links .sep-char { font-size: 10px; color: rgba(255,255,255,0.2); }
 .footer-legal-links a {
