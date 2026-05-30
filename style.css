@@ -972,7 +972,7 @@ img { display: block; max-width: 100%; }
 
 .footer-tagline {
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: 24px;
   font-weight: 300;
   font-style: italic;
   color: rgba(255,255,255,0.7);
