@@ -960,6 +960,7 @@ img { display: block; max-width: 100%; }
 .footer-grid {
   display: grid;
   grid-template-columns: 60fr 1px 40fr;
+  align-items: start;
   padding: 80px 64px;
 }
 .footer-left { padding-right: 64px; }
